@@ -126,8 +126,7 @@ export default function QuinielaManual() {
   const resultadosOficiales = {
     // Ejemplo: 1: "2 - 0", 
     // Ejemplo: 2: "1 - 1",
-    1: "2 - 1",
-    2: "1 - 2"
+  
   };
 
   // --- LÓGICA DE PUNTOS ---
