@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 
 export default function QuinielaManual() {
   const [activeTab, setActiveTab] = useState('pronosticar');
-  const [pronosticadorActivo, setPronosticadorActivo] = useState('alberto');
+  const [pronosticadorActivo, setPronosticadorActivo] = useState('betin');
 
   const marcadorMundial = {
     partido: "🇲🇽 MÉXICO VS SUDAFRICA",
     resultado: "0 - 0"
   };
 
-  
   const partidos = [
     { id: 1, local: "México", visita: "Sudáfrica", fecha: "11 Jun 12:30" },
     { id: 2, local: "Corea del Sur", visita: "República Checa", fecha: "11 Jun 19:45" },
@@ -115,52 +114,28 @@ export default function QuinielaManual() {
     chencho: { 1: "2 - 1", 2: "2 - 0", 3: "0 - 1", 4: "1 - 0", 5: "2 - 0", 6: "2 - 0", 7: "0 - 2", 8: "2 - 1", 9: "3 - 0", 10: "1 - 2", 11: "1 - 1", 12: "2 - 0", 13: "2 - 0", 14: "1 - 0", 15: "0 - 2", 16: "2 - 1", 17: "2 - 1", 18: "0 - 2", 19: "2 - 0", 20: "2 - 0", 21: "4 - 2", 22: "2 - 0", 23: "1 - 1", 24: "3 - 2", 25: "2 - 0", 26: "2 - 0", 27: "1 - 0", 28: "1 - 0", 29: "2 - 0", 30: "1 - 2", 31: "1 - 1", 32: "2 - 0", 33: "2 - 0", 34: "2 - 0", 35: "2 - 0", 36: "1 - 2", 37: "1 - 1", 38: "2 - 1", 39: "2 - 1", 40: "1 - 0", 41: "1 - 2", 42: "2 - 1", 43: "1 - 2", 44: "1 - 1", 45: "2 - 0", 46: "2 - 0", 47: "1 - 2", 48: "3 - 0", 49: "1 - 0", 50: "1 - 1", 51: "1 - 0", 52: "1 - 1", 53: "1 - 2", 54: "2 - 1", 55: "2 - 0", 56: "0 - 1", 57: "1 - 1", 58: "1 - 1", 59: "2 - 2", 60: "1 - 1", 61: "0 - 2", 62: "1 - 1", 63: "1 - 2", 64: "1 - 0", 65: "1 - 2", 66: "1 - 1", 67: "1 - 2", 68: "0 - 0", 69: "1 - 0", 70: "1 - 1", 71: "1 - 2", 72: "1 - 0" }
   };
 
-  // --- AQUÍ PONES LOS RESULTADOS REALES CONFORME SUCEDAN ---
-  // Si un partido no está aquí, el sistema asume que no se ha jugado ("POR DEFINIR")
-  const resultadosOficiales = {
-    // Ejemplo: 1: "2 - 0", 
-    // Ejemplo: 2: "1 - 1",
-  
-  };
+  const resultadosOficiales = {};
 
-  // --- LÓGICA DE PUNTOS ---
   const calcularPuntos = (prono, real) => {
     if (!prono || !real) return 0;
-    
-    // Separar los goles
     const [pL, pV] = prono.split(' - ').map(Number);
     const [rL, rV] = real.split(' - ').map(Number);
-
-    // 1. ¿Le atinó al marcador exacto? (2 puntos)
     if (pL === rL && pV === rV) return 2;
-
-    // 2. ¿Le atinó a la tendencia? (1 punto)
     const pronoTendencia = pL > pV ? 'Local' : pL < pV ? 'Visita' : 'Empate';
     const realTendencia = rL > rV ? 'Local' : rL < rV ? 'Visita' : 'Empate';
-    
-    if (pronoTendencia === realTendencia) return 1;
-
-    // 3. Falló todo (0 puntos)
-    return 0;
+    return pronoTendencia === realTendencia ? 1 : 0;
   };
 
-  // --- GENERAR LA TABLA DE RANKING ---
   const tablaRanking = participantes.map(participante => {
     let puntosTotales = 0;
-    const pronosticosUsuario = diccionariosPronosticos[participante.id];
-
-    // Revisar cada partido que ya tiene resultado oficial
+    const pronosticosUsuario = diccionariosPronosticos[participante.id] || {};
     Object.keys(resultadosOficiales).forEach(matchId => {
       const prono = pronosticosUsuario[matchId];
       const real = resultadosOficiales[matchId];
       puntosTotales += calcularPuntos(prono, real);
     });
-
     return { nombre: participante.nombre, puntos: puntosTotales };
-  }).sort((a, b) => b.puntos - a.puntos); // Ordenar de mayor a menor
-
-
-  const nombreActivo = participantes.find(p => p.id === pronosticadorActivo)?.nombre;
+  }).sort((a, b) => b.puntos - a.puntos);
 
   return (
     <div className="container">
@@ -178,7 +153,6 @@ export default function QuinielaManual() {
         <button className={activeTab === 'tabla' ? 'active' : ''} onClick={() => setActiveTab('tabla')}>Ranking</button>
       </nav>
 
-      {/* PESTAÑA: PRONÓSTICOS */}
       {activeTab === 'pronosticar' && (
         <div className="card">
           <div style={{ display: 'flex', gap: '10px', marginBottom: '20px', justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -189,78 +163,41 @@ export default function QuinielaManual() {
                 style={{ 
                   padding: '8px 16px', background: pronosticadorActivo === participante.id ? 'var(--accent)' : '#333', 
                   color: pronosticadorActivo === participante.id ? '#000' : '#fff', border: 'none', borderRadius: '5px', 
-                  cursor: 'pointer', fontWeight: 'bold', flexGrow: 1, textAlign: 'center'
+                  cursor: 'pointer', fontWeight: 'bold'
                 }}>
                 {participante.nombre}
               </button>
             ))}
           </div>
-
-          <h3 style={{textAlign: 'center', marginBottom: '20px', color: 'var(--accent)'}}>
-            Pronósticos
-          </h3>
-
           {partidos.map(p => {
-            const marcadorMostrado = diccionariosPronosticos[pronosticadorActivo][p.id] || "0 - 0";
+            const marcadorMostrado = diccionariosPronosticos[pronosticadorActivo]?.[p.id] || "-";
             return (
               <div key={p.id} className="fila-partido" style={{display: 'flex', justifyContent: 'space-between', padding: '10px', borderBottom: '1px solid #333'}}>
                 <span>{p.fecha} | {p.local} vs {p.visita}</span>
-                <div style={{textAlign: 'right'}}>
-                  <span style={{display: 'block', fontWeight: 'bold', fontSize: '1.1rem'}}>{marcadorMostrado}</span>
-                </div>
+                <span style={{fontWeight: 'bold'}}>{marcadorMostrado}</span>
               </div>
             );
           })}
         </div>
       )}
-
-      {/* PESTAÑA: RESULTADOS */}
+      
       {activeTab === 'anteriores' && (
         <div className="card">
-          <h3 style={{textAlign: 'center', marginBottom: '20px', color: 'var(--text-muted)'}}>Resultados Oficiales</h3>
-          {partidos.map(p => {
-            // Verifica si el partido ya tiene un resultado en el diccionario oficial
-            const resultadoOficial = resultadosOficiales[p.id];
-            
-            return (
-              <div key={p.id} className="fila-partido" style={{display: 'flex', justifyContent: 'space-between', padding: '10px', borderBottom: '1px solid #333'}}>
-                <span>{p.fecha} | {p.local} vs {p.visita}</span>
-                <div style={{textAlign: 'center'}}>
-                  <span style={{display: 'block', fontWeight: 'bold'}}>{resultadoOficial ? resultadoOficial : "0 - 0"}</span>
-                  <span style={{fontSize: '10px', color: resultadoOficial ? '#28a745' : 'var(--accent)'}}>
-                    {resultadoOficial ? "FINALIZADO" : "POR DEFINIR"}
-                  </span>
-                </div>
-              </div>
-            );
-          })}
+           <h3 style={{textAlign: 'center'}}>Resultados Oficiales</h3>
+           {partidos.map(p => (
+             <div key={p.id} style={{padding: '10px', borderBottom: '1px solid #333'}}>
+               {p.local} vs {p.visita} - {resultadosOficiales[p.id] || "POR DEFINIR"}
+             </div>
+           ))}
         </div>
       )}
 
-      {/* PESTAÑA: RANKING */}
       {activeTab === 'tabla' && (
         <div className="card">
-          <h3 style={{textAlign: 'center', marginBottom: '20px', color: 'var(--accent)'}}>Tabla General de Puntos</h3>
-          <table style={{width: '100%', borderCollapse: 'collapse'}}>
-            <thead>
-              <tr style={{borderBottom: '2px solid var(--accent)', textAlign: 'left'}}>
-                <th style={{padding: '10px'}}>Pos.</th>
-                <th style={{padding: '10px'}}>Participante</th>
-                <th style={{padding: '10px', textAlign: 'right'}}>Puntos</th>
-              </tr>
-            </thead>
-            <tbody>
-              {tablaRanking.map((participante, i) => (
-                <tr key={i} style={{borderBottom: '1px solid #333'}}>
-                  <td style={{padding: '10px', fontWeight: 'bold', color: 'var(--text-muted)'}}>{i + 1}</td>
-                  <td style={{padding: '10px'}}>{participante.nombre}</td>
-                  <td style={{padding: '10px', textAlign: 'right', fontWeight: 'bold', color: 'var(--accent)', fontSize: '1.2rem'}}>
-                    {participante.puntos}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <h3 style={{textAlign: 'center'}}>Ranking</h3>
+          {tablaRanking.map((p, i) => (
+            <div key={i}>{i + 1}. {p.nombre} - {p.puntos} pts</div>
+          ))}
         </div>
       )}
     </div>
