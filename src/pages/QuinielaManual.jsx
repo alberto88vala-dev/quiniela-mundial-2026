@@ -5,7 +5,7 @@ export default function QuinielaManual() {
   const [pronosticadorActivo, setPronosticadorActivo] = useState('betin');
 
   const marcadorMundial = {
-    partido: "🇲🇽 MÉXICO VS SUDAFRICA",
+    partido: "MÉXICO VS SUDAFRICA",
     resultado: "0 - 0"
   };
 
