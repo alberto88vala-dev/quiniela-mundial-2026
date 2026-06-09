@@ -5,7 +5,7 @@ export default function QuinielaManual() {
   const [pronosticadorActivo, setPronosticadorActivo] = useState('betin');
 
   const marcadorMundial = {
-    partido: "MÉXICO VS SUDAFRICA",
+    partido: "🇲🇽 MÉXICO VS SUDAFRICA 🇿🇦",
     resultado: "0 - 0"
   };
 
@@ -84,6 +84,20 @@ export default function QuinielaManual() {
     { id: 72, local: "Croacia", visita: "Ghana", fecha: "27 Jun 14:40" }
   ];
 
+  const banderas = {
+    "México": "🇲🇽", "Sudáfrica": "🇿🇦", "Corea del Sur": "🇰🇷", "República Checa": "🇨🇿",
+    "Canadá": "🇨🇦", "Bosnia y Herzegovina": "🇧🇦", "Estados Unidos": "🇺🇸", "Paraguay": "🇵🇾",
+    "Catar": "🇶🇦", "Suiza": "🇨🇭", "Brasil": "🇧🇷", "Marruecos": "🇲🇦", "Haití": "🇭🇹", 
+    "Escocia": "🏴󠁧󠁢󠁳󠁣󠁴󠁿", "Australia": "🇦🇺", "Turquía": "🇹🇷", "Alemania": "🇩🇪", "Curazao": "🇨🇼",
+    "Países Bajos": "🇳🇱", "Japón": "🇯🇵", "Costa de Marfil": "🇨🇮", "Ecuador": "🇪🇨", 
+    "Suecia": "🇸🇪", "Túnez": "🇹🇳", "Bélgica": "🇧🇪", "Egipto": "🇪🇬", "Irán": "🇮🇷", 
+    "Nueva Zelanda": "🇳🇿", "Arabia Saudita": "🇸🇦", "Uruguay": "🇺🇾", "España": "🇪🇸", 
+    "Cabo Verde": "🇨🇻", "Francia": "🇫🇷", "Senegal": "🇸🇳", "Irak": "🇮🇶", "Noruega": "🇳🇴",
+    "Argentina": "🇦🇷", "Argelia": "🇩🇿", "Austria": "🇦🇹", "Jordania": "🇯🇴", "Uzbekistán": "🇺🇿",
+    "Colombia": "🇨🇴", "Portugal": "🇵🇹", "RD Congo": "🇨🇩", "Ghana": "🇬🇭", "Panamá": "🇵🇦",
+    "Inglaterra": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "Croacia": "🇭🇷"
+  };
+
   const participantes = [
     { id: 'betin', nombre: 'Betin' },
     { id: 'fernanda', nombre: 'Maria Fernanda' },
@@ -102,7 +116,6 @@ export default function QuinielaManual() {
     { id: 'javier', nombre: 'Javier' },
     { id: 'carmela', nombre: 'Carmela' },
     { id: 'tsuki', nombre: 'Tsuki' }
-
   ];
 
   const diccionariosPronosticos = {
@@ -124,6 +137,7 @@ export default function QuinielaManual() {
     chencho: { 1: "2 - 1", 2: "2 - 0", 3: "0 - 1", 4: "1 - 0", 5: "2 - 0", 6: "2 - 0", 7: "0 - 2", 8: "2 - 1", 9: "3 - 0", 10: "1 - 2", 11: "1 - 1", 12: "1 - 0", 13: "2 - 1", 14: "2 - 0", 15: "0 - 2", 16: "0 - 0", 17: "2 - 1", 18: "0 - 2", 19: "2 - 0", 20: "1 - 0", 21: "2 - 0", 22: "2 - 2", 23: "1 - 1", 24: "0 - 2", 25: "2 - 0", 26: "1 - 0", 27: "1 - 0", 28: "2 - 0", 29: "2 - 0", 30: "1 - 2", 31: "2 - 0", 32: "1 - 1", 33: "2 - 0", 34: "2 - 0", 35: "2 - 0", 36: "1 - 2", 37: "1 - 0", 38: "2 - 1", 39: "2 - 1", 40: "1 - 0", 41: "2 - 2", 42: "2 - 1", 43: "2 - 0", 44: "0 - 1", 45: "2 - 0", 46: "3 - 0", 47: "0 - 2", 48: "2 - 0", 49: "2 - 1", 50: "0 - 1", 51: "1 - 2", 52: "2 - 1", 53: "0 - 1", 54: "1 - 1", 55: "0 - 1", 56: "1 - 2", 57: "0 - 1", 58: "1 - 0", 59: "2 - 0", 60: "1 - 2", 61: "0 - 0", 62: "0 - 1", 63: "1 - 2", 64: "0 - 0", 65: "0 - 0", 66: "0 - 1", 67: "1 - 2", 68: "1 - 0", 69: "1 - 2", 70: "0 - 0", 71: "1 - 2", 72: "0 - 1" },
     tsuki: { 1: "2 - 0", 2: "2 - 1", 3: "1 - 1", 4: "2 - 0", 5: "0 - 2", 6: "2 - 1", 7: "0 - 2", 8: "1 - 2", 9: "4 - 0", 10: "3 - 0", 11: "2 - 1", 12: "0 - 2", 13: "3 - 0", 14: "3 - 1", 15: "1 - 2", 16: "1 - 0", 17: "2 - 0", 18: "0 - 3", 19: "3 - 0", 20: "2 - 1", 21: "3 - 0", 22: "2 - 1", 23: "2 - 0", 24: "0 - 3", 25: "1 - 2", 26: "2 - 0", 27: "2 - 1", 28: "1 - 2", 29: "2 - 0", 30: "1 - 1", 31: "3 - 0", 32: "3 - 1", 33: "1 - 1", 34: "2 - 1", 35: "5 - 0", 36: "0 - 2", 37: "2 - 1", 38: "3 - 1", 39: "3 - 0", 40: "0 - 2", 41: "2 - 0", 42: "3 - 0", 43: "2 - 1", 44: "0 - 2", 45: "2 - 1", 46: "2 - 1", 47: "0 - 3", 48: "2 - 0", 49: "1 - 0", 50: "3 - 1", 51: "0 - 1", 52: "1 - 4", 53: "0 - 0", 54: "2 - 0", 55: "3 - 0", 56: "3 - 0", 57: "1 - 2", 58: "0 - 0", 59: "3 - 1", 60: "1 - 0", 61: "2 - 1", 62: "1 - 0", 63: "0 - 2", 64: "1 - 1", 65: "1 - 1", 66: "0 - 2", 67: "2 - 0", 68: "3 - 1", 69: "1 - 1", 70: "2 - 0", 71: "2 - 1", 72: "0 - 4" }
   };
+
   const resultadosOficiales = {};
 
   const calcularPuntos = (prono, real) => {
@@ -157,59 +171,134 @@ export default function QuinielaManual() {
         </div>
       </header>
 
-      <nav className="tabs">
-        <button className={activeTab === 'pronosticar' ? 'active' : ''} onClick={() => setActiveTab('pronosticar')}>Pronósticos</button>
-        <button className={activeTab === 'anteriores' ? 'active' : ''} onClick={() => setActiveTab('anteriores')}>Resultados</button>
-        <button className={activeTab === 'tabla' ? 'active' : ''} onClick={() => setActiveTab('tabla')}>Ranking</button>
+      <nav className="tabs" style={{ display: 'flex', justifyContent: 'space-around', marginBottom: '20px' }}>
+        <button className={activeTab === 'pronosticar' ? 'active' : ''} onClick={() => setActiveTab('pronosticar')}>⚽ Pronósticos</button>
+        <button className={activeTab === 'anteriores' ? 'active' : ''} onClick={() => setActiveTab('anteriores')}>📅 Resultados</button>
+        <button className={activeTab === 'tabla' ? 'active' : ''} onClick={() => setActiveTab('tabla')}>🏆 Ranking</button>
       </nav>
 
+      {/* PESTAÑA: PRONÓSTICOS */}
       {activeTab === 'pronosticar' && (
         <div className="card">
-          <div style={{ display: 'flex', gap: '10px', marginBottom: '20px', justifyContent: 'center', flexWrap: 'wrap' }}>
+          {/* Carrusel de botones de participantes */}
+          <div style={{ 
+            display: 'flex', 
+            gap: '10px', 
+            marginBottom: '20px', 
+            overflowX: 'auto', 
+            paddingBottom: '15px',
+            WebkitOverflowScrolling: 'touch',
+            scrollbarWidth: 'none'
+          }}>
+            <style>
+              {`
+                div::-webkit-scrollbar {
+                  display: none;
+                }
+              `}
+            </style>
+            
             {participantes.map(participante => (
               <button 
                 key={participante.id}
                 onClick={() => setPronosticadorActivo(participante.id)} 
                 style={{ 
-                  padding: '8px 16px', background: pronosticadorActivo === participante.id ? 'var(--accent)' : '#333', 
-                  color: pronosticadorActivo === participante.id ? '#000' : '#fff', border: 'none', borderRadius: '5px', 
-                  cursor: 'pointer', fontWeight: 'bold'
+                  padding: '10px 20px', 
+                  background: pronosticadorActivo === participante.id ? 'var(--accent)' : '#2a2a2a', 
+                  color: pronosticadorActivo === participante.id ? '#000' : '#fff', 
+                  border: pronosticadorActivo === participante.id ? '2px solid transparent' : '2px solid #444', 
+                  borderRadius: '25px', 
+                  cursor: 'pointer', 
+                  fontWeight: 'bold', 
+                  whiteSpace: 'nowrap', 
+                  transition: 'all 0.3s ease',
+                  boxShadow: pronosticadorActivo === participante.id ? '0 4px 10px rgba(0, 255, 136, 0.3)' : 'none',
+                  flexShrink: 0
                 }}>
                 {participante.nombre}
               </button>
             ))}
           </div>
+
+          <h3 style={{textAlign: 'center', marginBottom: '20px', color: 'var(--accent)'}}>
+            Pronósticos
+          </h3>
+
+          {/* Lista de Partidos con Banderas */}
           {partidos.map(p => {
             const marcadorMostrado = diccionariosPronosticos[pronosticadorActivo]?.[p.id] || "-";
             return (
-              <div key={p.id} className="fila-partido" style={{display: 'flex', justifyContent: 'space-between', padding: '10px', borderBottom: '1px solid #333'}}>
-                <span>{p.fecha} | {p.local} vs {p.visita}</span>
-                <span style={{fontWeight: 'bold'}}>{marcadorMostrado}</span>
+              <div key={p.id} className="fila-partido" style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 10px', borderBottom: '1px solid #333'}}>
+                <span style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                  <span style={{ fontSize: '0.8rem', color: '#888' }}>{p.fecha}</span>
+                  <span style={{ fontSize: '1rem' }}>
+                    {banderas[p.local] || '🏳️'} <b>{p.local}</b> vs <b>{p.visita}</b> {banderas[p.visita] || '🏳️'}
+                  </span>
+                </span>
+                <div style={{textAlign: 'right'}}>
+                  <span style={{display: 'block', fontWeight: 'bold', fontSize: '1.2rem', color: 'var(--accent)'}}>{marcadorMostrado}</span>
+                </div>
               </div>
             );
           })}
         </div>
       )}
-      
+
+      {/* PESTAÑA: RESULTADOS */}
       {activeTab === 'anteriores' && (
         <div className="card">
-           <h3 style={{textAlign: 'center'}}>Resultados Oficiales</h3>
-           {partidos.map(p => (
-             <div key={p.id} style={{padding: '10px', borderBottom: '1px solid #333'}}>
-               {p.local} vs {p.visita} - {resultadosOficiales[p.id] || "POR DEFINIR"}
-             </div>
-           ))}
+           <h3 style={{textAlign: 'center', marginBottom: '20px', color: 'var(--text-muted)'}}>Resultados Oficiales</h3>
+           {partidos.map(p => {
+             const resultadoOficial = resultadosOficiales[p.id];
+             return (
+               <div key={p.id} className="fila-partido" style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 10px', borderBottom: '1px solid #333'}}>
+                 <span style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                   <span style={{ fontSize: '0.8rem', color: '#888' }}>{p.fecha}</span>
+                   <span style={{ fontSize: '1rem' }}>
+                     {banderas[p.local] || '🏳️'} <b>{p.local}</b> vs <b>{p.visita}</b> {banderas[p.visita] || '🏳️'}
+                   </span>
+                 </span>
+                 <div style={{textAlign: 'center'}}>
+                   <span style={{display: 'block', fontWeight: 'bold', fontSize: '1.2rem'}}>
+                     {resultadoOficial ? resultadoOficial : "0 - 0"}
+                   </span>
+                   <span style={{fontSize: '10px', fontWeight: 'bold', color: resultadoOficial ? '#28a745' : 'var(--text-muted)'}}>
+                     {resultadoOficial ? "FINALIZADO" : "POR DEFINIR"}
+                   </span>
+                 </div>
+               </div>
+             );
+           })}
         </div>
       )}
 
+      {/* PESTAÑA: RANKING */}
       {activeTab === 'tabla' && (
         <div className="card">
-          <h3 style={{textAlign: 'center'}}>Ranking</h3>
-          {tablaRanking.map((p, i) => (
-            <div key={i}>{i + 1}. {p.nombre} - {p.puntos} pts</div>
-          ))}
+          <h3 style={{textAlign: 'center', marginBottom: '20px', color: 'var(--accent)'}}>Tabla General de Puntos</h3>
+          <table style={{width: '100%', borderCollapse: 'collapse'}}>
+            <thead>
+              <tr style={{borderBottom: '2px solid var(--accent)', textAlign: 'left'}}>
+                <th style={{padding: '10px'}}>Pos.</th>
+                <th style={{padding: '10px'}}>Participante</th>
+                <th style={{padding: '10px', textAlign: 'right'}}>Puntos</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tablaRanking.map((participante, i) => (
+                <tr key={i} style={{borderBottom: '1px solid #333'}}>
+                  <td style={{padding: '10px', fontWeight: 'bold', color: 'var(--text-muted)'}}>{i + 1}</td>
+                  <td style={{padding: '10px'}}>{participante.nombre}</td>
+                  <td style={{padding: '10px', textAlign: 'right', fontWeight: 'bold', color: 'var(--accent)', fontSize: '1.2rem'}}>
+                    {participante.puntos}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       )}
+
     </div>
   );
 }
