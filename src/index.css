@@ -250,3 +250,34 @@ table tbody tr:hover td {
   padding: 15px;
   border-bottom: 1px solid var(--border);
 }
+.tabs button {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid var(--border);
+}
+
+.tabs button:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.2);
+  border-color: var(--accent);
+}
+
+/* Efecto hover en las filas de los partidos */
+.fila-partido {
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  border-radius: 8px; /* Bordes suaves para la fila */
+}
+
+.fila-partido:hover {
+  background-color: rgba(56, 189, 248, 0.05); /* Un brillo azul muy sutil al pasar el mouse */
+  padding-left: 15px; /* Pequeño movimiento hacia la derecha al hacer hover */
+}
+
+/* Mejora adicional para que el scroll del carrusel de participantes 
+   se vea oculto pero funcional en dispositivos móviles */
+.scroll-container {
+  scrollbar-width: none; /* Firefox */
+}
+.scroll-container::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Edge */
+}
