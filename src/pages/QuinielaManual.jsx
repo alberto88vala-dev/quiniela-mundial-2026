@@ -181,39 +181,32 @@ export default function QuinielaManual() {
       {activeTab === 'pronosticar' && (
         <div className="card">
           {/* Carrusel de botones de participantes */}
+         {/* Contenedor mejorado de participantes */}
           <div style={{ 
             display: 'flex', 
-            gap: '10px', 
-            marginBottom: '20px', 
-            overflowX: 'auto', 
-            paddingBottom: '15px',
-            WebkitOverflowScrolling: 'touch',
-            scrollbarWidth: 'none'
+            flexWrap: 'wrap', /* IMPORTANTE: Permite que bajen de renglón */
+            justifyContent: 'center', /* Centra los botones en el espacio disponible */
+            gap: '8px', 
+            marginBottom: '25px',
+            padding: '0 10px'
           }}>
-            <style>
-              {`
-                div::-webkit-scrollbar {
-                  display: none;
-                }
-              `}
-            </style>
             
             {participantes.map(participante => (
               <button 
                 key={participante.id}
                 onClick={() => setPronosticadorActivo(participante.id)} 
                 style={{ 
-                  padding: '10px 20px', 
+                  padding: '8px 16px', 
+                  fontSize: '0.9rem', /* Un poco más compacto */
                   background: pronosticadorActivo === participante.id ? 'var(--accent)' : '#2a2a2a', 
                   color: pronosticadorActivo === participante.id ? '#000' : '#fff', 
                   border: pronosticadorActivo === participante.id ? '2px solid transparent' : '2px solid #444', 
-                  borderRadius: '25px', 
+                  borderRadius: '20px', 
                   cursor: 'pointer', 
                   fontWeight: 'bold', 
                   whiteSpace: 'nowrap', 
                   transition: 'all 0.3s ease',
-                  boxShadow: pronosticadorActivo === participante.id ? '0 4px 10px rgba(0, 255, 136, 0.3)' : 'none',
-                  flexShrink: 0
+                  boxShadow: pronosticadorActivo === participante.id ? '0 4px 10px rgba(0, 255, 136, 0.3)' : 'none'
                 }}>
                 {participante.nombre}
               </button>
