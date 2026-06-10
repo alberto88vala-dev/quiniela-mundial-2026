@@ -48,7 +48,7 @@ export default function QuinielaManual() {
     { id: 36, local: "Túnez", visita: "Japón", fecha: "20 Jun 21:45" },
     { id: 37, local: "Nueva Zelanda", visita: "Egipto", fecha: "21 Jun 18:45" },
     { id: 38, local: "Bélgica", visita: "Irán", fecha: "21 Jun 12:45" },
-    { id: 39, local: "Uruguay", visita: "Cabo Verde", fecha: "21 Jun 15:45" },
+    { id: 39, local: "Uruguay", Permite: "Cabo Verde", fecha: "21 Jun 15:45" },
     { id: 40, local: "España", visita: "Arabia Saudita", fecha: "21 Jun 09:40" },
     { id: 41, local: "Noruega", visita: "Senegal", fecha: "22 Jun 17:40" },
     { id: 42, local: "Francia", visita: "Irak", fecha: "22 Jun 14:45" },
@@ -180,24 +180,21 @@ export default function QuinielaManual() {
       {/* PESTAÑA: PRONÓSTICOS */}
       {activeTab === 'pronosticar' && (
         <div className="card">
-          {/* Carrusel de botones de participantes */}
-         {/* Contenedor mejorado de participantes */}
           <div style={{ 
             display: 'flex', 
-            flexWrap: 'wrap', /* IMPORTANTE: Permite que bajen de renglón */
-            justifyContent: 'center', /* Centra los botones en el espacio disponible */
+            flexWrap: 'wrap', 
+            justifyContent: 'center', 
             gap: '8px', 
             marginBottom: '25px',
             padding: '0 10px'
           }}>
-            
             {participantes.map(participante => (
               <button 
                 key={participante.id}
                 onClick={() => setPronosticadorActivo(participante.id)} 
                 style={{ 
                   padding: '8px 16px', 
-                  fontSize: '0.9rem', /* Un poco más compacto */
+                  fontSize: '0.9rem', 
                   background: pronosticadorActivo === participante.id ? 'var(--accent)' : '#2a2a2a', 
                   color: pronosticadorActivo === participante.id ? '#000' : '#fff', 
                   border: pronosticadorActivo === participante.id ? '2px solid transparent' : '2px solid #444', 
@@ -217,20 +214,42 @@ export default function QuinielaManual() {
             Pronósticos
           </h3>
 
-          {/* Lista de Partidos con Banderas */}
           {partidos.map(p => {
             const marcadorMostrado = diccionariosPronosticos[pronosticadorActivo]?.[p.id] || "-";
             return (
-              <div key={p.id} className="fila-partido" style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 10px', borderBottom: '1px solid #333'}}>
-                <span style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                  <span style={{ fontSize: '0.8rem', color: '#888' }}>{p.fecha}</span>
-                  <span style={{ fontSize: '1rem' }}>
-                    {banderas[p.local] || '🏳️'} <b>{p.local}</b> vs <b>{p.visita}</b> {banderas[p.visita] || '🏳️'}
-                  </span>
+              <div key={p.id} className="fila-partido" style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr auto 1fr', 
+                alignItems: 'center',
+                gap: '10px',
+                padding: '15px 10px',
+                borderBottom: '1px solid #333',
+                backgroundColor: 'rgba(255,255,255,0.02)'
+              }}>
+                <span style={{ textAlign: 'right', fontSize: '0.9rem', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  {banderas[p.local] || '🏳️'} <b>{p.local}</b>
                 </span>
-                <div style={{textAlign: 'right'}}>
-                  <span style={{display: 'block', fontWeight: 'bold', fontSize: '1.2rem', color: 'var(--accent)'}}>{marcadorMostrado}</span>
+
+                <div style={{ 
+                  backgroundColor: '#0a0e17', 
+                  padding: '5px 12px', 
+                  borderRadius: '6px', 
+                  border: '1px solid var(--accent)',
+                  fontWeight: 'bold', 
+                  fontSize: '1.1rem',
+                  color: 'var(--accent)',
+                  textAlign: 'center'
+                }}>
+                  {marcadorMostrado}
                 </div>
+
+                <span style={{ textAlign: 'left', fontSize: '0.9rem', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  <b>{p.visita}</b> {banderas[p.visita] || '🏳️'}
+                </span>
+                
+                <span style={{ gridColumn: '1 / -1', textAlign: 'center', fontSize: '0.7rem', color: '#888', marginTop: '5px' }}>
+                  {p.fecha}
+                </span>
               </div>
             );
           })}
@@ -244,22 +263,44 @@ export default function QuinielaManual() {
            {partidos.map(p => {
              const resultadoOficial = resultadosOficiales[p.id];
              return (
-               <div key={p.id} className="fila-partido" style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 10px', borderBottom: '1px solid #333'}}>
-                 <span style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                   <span style={{ fontSize: '0.8rem', color: '#888' }}>{p.fecha}</span>
-                   <span style={{ fontSize: '1rem' }}>
-                     {banderas[p.local] || '🏳️'} <b>{p.local}</b> vs <b>{p.visita}</b> {banderas[p.visita] || '🏳️'}
-                   </span>
-                 </span>
-                 <div style={{textAlign: 'center'}}>
-                   <span style={{display: 'block', fontWeight: 'bold', fontSize: '1.2rem'}}>
-                     {resultadoOficial ? resultadoOficial : "0 - 0"}
-                   </span>
-                   <span style={{fontSize: '10px', fontWeight: 'bold', color: resultadoOficial ? '#28a745' : 'var(--text-muted)'}}>
+              <div key={p.id} className="fila-partido" style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr auto 1fr', 
+                alignItems: 'center',
+                gap: '10px',
+                padding: '15px 10px',
+                borderBottom: '1px solid #333',
+                backgroundColor: 'rgba(255,255,255,0.02)'
+              }}>
+                <span style={{ textAlign: 'right', fontSize: '0.9rem', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  {banderas[p.local] || '🏳️'} <b>{p.local}</b>
+                </span>
+
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ 
+                    backgroundColor: '#0a0e17', 
+                    padding: '5px 12px', 
+                    borderRadius: '6px', 
+                    border: resultadoOficial ? '1px solid #28a745' : '1px solid #444',
+                    fontWeight: 'bold', 
+                    fontSize: '1.1rem',
+                    color: resultadoOficial ? '#fff' : 'var(--text-muted)'
+                  }}>
+                    {resultadoOficial ? resultadoOficial : "0 - 0"}
+                  </div>
+                  <span style={{fontSize: '10px', fontWeight: 'bold', color: resultadoOficial ? '#28a745' : 'var(--text-muted)', display: 'block', marginTop: '4px'}}>
                      {resultadoOficial ? "FINALIZADO" : "POR DEFINIR"}
-                   </span>
-                 </div>
-               </div>
+                  </span>
+                </div>
+
+                <span style={{ textAlign: 'left', fontSize: '0.9rem', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  <b>{p.visita}</b> {banderas[p.visita] || '🏳️'}
+                </span>
+                
+                <span style={{ gridColumn: '1 / -1', textAlign: 'center', fontSize: '0.7rem', color: '#888', marginTop: '5px' }}>
+                  {p.fecha}
+                </span>
+              </div>
              );
            })}
         </div>
