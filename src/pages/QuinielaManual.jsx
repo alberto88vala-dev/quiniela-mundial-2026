@@ -6,7 +6,7 @@ export default function QuinielaManual() {
 
   const marcadorMundial = {
     partido: "Rep. De Corea VS Rep. Checa",
-    resultado: "0 - 1"
+    resultado: "1 - 1"
   };
 
   const partidos = [
