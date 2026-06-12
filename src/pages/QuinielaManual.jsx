@@ -141,7 +141,9 @@ export default function QuinielaManual() {
   };
 
   const resultadosOficiales = {
-    1: "2 - 0"// partido 1: Mexico vs sudafrica
+    1: "2 - 0",// partido 1: Mexico vs sudafrica
+    2: "1 - 1"
+
   };
 
   const calcularPuntos = (prono, real) => {
