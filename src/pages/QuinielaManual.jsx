@@ -6,7 +6,7 @@ export default function QuinielaManual() {
 
   const marcadorMundial = {
     partido: "Rep. De Corea VS Rep. Checa",
-    resultado: "1 - 1"
+    resultado: "2 - 1"
   };
 
   const partidos = [
@@ -142,7 +142,7 @@ export default function QuinielaManual() {
 
   const resultadosOficiales = {
     1: "2 - 0",// partido 1: Mexico vs sudafrica
-    2: "1 - 1"
+    2: "2 - 1"
 
   };
 
