@@ -5,8 +5,8 @@ export default function QuinielaManual() {
   const [pronosticadorActivo, setPronosticadorActivo] = useState('betin');
 
   const marcadorMundial = {
-    partido: " Estados Unidos VS Paraguay",
-    resultado: "4 - 1"
+    partido: " HAITI VS ESCOCIA",
+    resultado: "0 - 1"
   };
 
   const partidos = [
@@ -145,6 +145,9 @@ export default function QuinielaManual() {
     2: "2 - 1",
     3: "1 - 1",
     4: "4 - 1",
+    5: "1 - 1",
+    6: "1 - 1",
+    7: "0 - 1"
 
   };
 
