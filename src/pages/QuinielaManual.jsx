@@ -6,7 +6,7 @@ export default function QuinielaManual() {
 
   const marcadorMundial = {
     partido: " SUECIA VS TUNEZ",
-    resultado: " 2 - 1"
+    resultado: " 5 - 1"
   };
 
   const partidos = [
@@ -152,7 +152,7 @@ export default function QuinielaManual() {
     9: "7 - 1",
     10: "2 - 2",
     11: "1 - 0",
-    12: "2 - 1",
+    12: "5 - 1",
 
   };
 
