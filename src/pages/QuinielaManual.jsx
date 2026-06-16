@@ -193,10 +193,11 @@ export default function QuinielaManual() {
         </div>
       </header>
 
-      <nav className="tabs" style={{ display: 'flex', justifyContent: 'space-around', marginBottom: '20px' }}>
+      <nav className="tabs" style={{ display: 'flex', justifyContent: 'space-around', marginBottom: '20px', flexWrap: 'wrap', gap: '10px' }}>
         <button className={activeTab === 'pronosticar' ? 'active' : ''} onClick={() => setActiveTab('pronosticar')}>⚽ Pronósticos</button>
         <button className={activeTab === 'anteriores' ? 'active' : ''} onClick={() => setActiveTab('anteriores')}>📅 Resultados</button>
         <button className={activeTab === 'tabla' ? 'active' : ''} onClick={() => setActiveTab('tabla')}>🏆 Ranking</button>
+        <button className={activeTab === 'comparativa' ? 'active' : ''} onClick={() => setActiveTab('comparativa')}>📊 Comparativa</button>
       </nav>
 
       {/* PESTAÑA: PRONÓSTICOS */}
@@ -352,6 +353,81 @@ export default function QuinielaManual() {
               ))}
             </tbody>
           </table>
+        </div>
+      )}
+      {/* PESTAÑA: COMPARATIVA */}
+      {activeTab === 'comparativa' && (
+        <div className="card">
+          <h3 style={{textAlign: 'center', marginBottom: '20px', color: 'var(--accent)'}}>Comparativa General</h3>
+          
+          {/* Contenedor con scroll horizontal para la tabla */}
+          <div style={{ width: '100%', overflowX: 'auto', paddingBottom: '10px' }}>
+            <table style={{width: '100%', borderCollapse: 'collapse', minWidth: '900px'}}>
+              <thead>
+                <tr style={{borderBottom: '2px solid var(--accent)', textAlign: 'center'}}>
+                  {/* Columna de partido pegajosa (sticky) para que no se pierda al hacer scroll horizontal */}
+                  <th style={{padding: '10px', textAlign: 'left', position: 'sticky', left: 0, backgroundColor: '#151b27', zIndex: 2, borderRight: '1px solid #333'}}>
+                    Partido
+                  </th>
+                  {participantes.map(participante => (
+                    <th key={participante.id} style={{padding: '10px', whiteSpace: 'nowrap', fontSize: '0.9rem'}}>
+                      {participante.nombre}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {partidos.map(p => {
+                  const resultadoOficial = resultadosOficiales[p.id];
+                  
+                  return (
+                    <tr key={p.id} style={{borderBottom: '1px solid #333', textAlign: 'center', backgroundColor: 'rgba(255,255,255,0.02)'}}>
+                      <td style={{
+                        padding: '10px', 
+                        textAlign: 'left', 
+                        whiteSpace: 'nowrap', 
+                        position: 'sticky', 
+                        left: 0, 
+                        backgroundColor: '#151b27', /* Color de fondo de la tarjeta */
+                        borderRight: '1px solid #333',
+                        zIndex: 1
+                      }}>
+                        <span style={{fontSize: '0.75rem', color: '#888', display: 'block'}}>{p.fecha}</span>
+                        {banderas[p.local]} <span style={{fontSize: '0.9rem'}}><b>{p.local}</b> vs <b>{p.visita}</b></span> {banderas[p.visita]}
+                        
+                        {resultadoOficial && (
+                          <span style={{display: 'block', fontSize: '0.8rem', color: '#28a745', marginTop: '4px'}}>
+                            Real: {resultadoOficial}
+                          </span>
+                        )}
+                      </td>
+                      
+                      {participantes.map(participante => {
+                        const prono = diccionariosPronosticos[participante.id]?.[p.id] || "-";
+                        let colorProno = '#fff'; // Color blanco por defecto
+                        
+                        // Lógica de colores si el partido ya terminó
+                        if (resultadoOficial && prono !== "-") {
+                          const puntos = calcularPuntos(prono, resultadoOficial);
+                          if (puntos === 2) colorProno = '#28a745'; // Exacto (Verde)
+                          else if (puntos === 1) colorProno = 'var(--accent)'; // Tendencia (Azul)
+                          else colorProno = '#dc3545'; // Fallo (Rojo)
+                        } else if (!resultadoOficial && prono === "-") {
+                          colorProno = '#555'; // Gris para los vacíos
+                        }
+
+                        return (
+                          <td key={participante.id} style={{padding: '10px', fontWeight: 'bold', color: colorProno, whiteSpace: 'nowrap'}}>
+                            {prono}
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
 
