@@ -398,15 +398,31 @@ export default function QuinielaManual() {
           
           {/* Contenedor con scroll horizontal para la tabla */}
           <div style={{ width: '100%', overflowX: 'auto', paddingBottom: '10px' }}>
-            <table style={{width: '100%', borderCollapse: 'collapse', minWidth: '900px'}}>
+            {/* LA SOLUCIÓN: Usar borderCollapse: 'separate' y borderSpacing: 0 */}
+            <table style={{width: '100%', borderCollapse: 'separate', borderSpacing: 0, minWidth: '900px'}}>
               <thead>
-                <tr style={{borderBottom: '2px solid var(--accent)', textAlign: 'center'}}>
-                  {/* Columna de partido pegajosa (sticky) para que no se pierda al hacer scroll horizontal */}
-                  <th style={{padding: '10px', textAlign: 'left', position: 'sticky', left: 0, backgroundColor: '#151b27', zIndex: 2, borderRight: '1px solid #333'}}>
+                <tr>
+                  {/* Columna de partido pegajosa (sticky) */}
+                  <th style={{
+                    padding: '10px', 
+                    textAlign: 'left', 
+                    position: 'sticky', 
+                    left: 0, 
+                    backgroundColor: '#151b27', /* Mismo color de fondo que la tarjeta */
+                    zIndex: 10, 
+                    borderBottom: '2px solid var(--accent)',
+                    borderRight: '1px solid #333'
+                  }}>
                     Partido
                   </th>
                   {participantes.map(participante => (
-                    <th key={participante.id} style={{padding: '10px', whiteSpace: 'nowrap', fontSize: '0.9rem'}}>
+                    <th key={participante.id} style={{
+                      padding: '10px', 
+                      whiteSpace: 'nowrap', 
+                      fontSize: '0.9rem',
+                      borderBottom: '2px solid var(--accent)',
+                      textAlign: 'center'
+                    }}>
                       {participante.nombre}
                     </th>
                   ))}
@@ -417,16 +433,17 @@ export default function QuinielaManual() {
                   const resultadoOficial = resultadosOficiales[p.id];
                   
                   return (
-                    <tr key={p.id} style={{borderBottom: '1px solid #333', textAlign: 'center', backgroundColor: 'rgba(255,255,255,0.02)'}}>
+                    <tr key={p.id} style={{ backgroundColor: 'rgba(255,255,255,0.02)' }}>
                       <td style={{
                         padding: '10px', 
                         textAlign: 'left', 
                         whiteSpace: 'nowrap', 
                         position: 'sticky', 
                         left: 0, 
-                        backgroundColor: '#151b27', 
+                        backgroundColor: '#151b27', /* Obligatorio para que no se transparente al deslizar */
                         borderRight: '1px solid #333',
-                        zIndex: 1
+                        borderBottom: '1px solid #333',
+                        zIndex: 5
                       }}>
                         <span style={{fontSize: '0.75rem', color: '#888', display: 'block'}}>{p.fecha}</span>
                         {banderas[p.local]} <span style={{fontSize: '0.9rem'}}><b>{p.local}</b> vs <b>{p.visita}</b></span> {banderas[p.visita]}
@@ -453,7 +470,14 @@ export default function QuinielaManual() {
                         }
 
                         return (
-                          <td key={participante.id} style={{padding: '10px', fontWeight: 'bold', color: colorProno, whiteSpace: 'nowrap'}}>
+                          <td key={participante.id} style={{
+                            padding: '10px', 
+                            fontWeight: 'bold', 
+                            color: colorProno, 
+                            whiteSpace: 'nowrap',
+                            borderBottom: '1px solid #333',
+                            textAlign: 'center'
+                          }}>
                             {prono}
                           </td>
                         );
