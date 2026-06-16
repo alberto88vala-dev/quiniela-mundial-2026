@@ -6,7 +6,7 @@ export default function QuinielaManual() {
 
   const marcadorMundial = {
     partido: " Irak VS Noruega",
-    resultado: " 1 - 2"
+    resultado: " 1 - 3"
   };
 
   const partidos = [
@@ -158,6 +158,7 @@ export default function QuinielaManual() {
     15: "1 - 1",
     16: "2 - 2",
     17: "3 - 1",
+    18: "1 - 3",
     
   };
 
