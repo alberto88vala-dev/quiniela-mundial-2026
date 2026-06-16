@@ -157,6 +157,8 @@ export default function QuinielaManual() {
     14: "1 - 1",
     15: "1 - 1",
     16: "2 - 2",
+    17: "3 - 1",
+    
   };
 
   const calcularPuntos = (prono, real) => {
