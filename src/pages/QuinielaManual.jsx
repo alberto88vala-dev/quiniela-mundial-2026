@@ -5,8 +5,8 @@ export default function QuinielaManual() {
   const [pronosticadorActivo, setPronosticadorActivo] = useState('betin');
 
   const marcadorMundial = {
-    partido: " IRAN VS NUEVA ZELANDA",
-    resultado: " 2 - 2"
+    partido: " Irak VS Noruega",
+    resultado: " 1 - 2"
   };
 
   const partidos = [
@@ -82,16 +82,16 @@ export default function QuinielaManual() {
     { id: 70, local: "RD Congo", visita: "Uzbekistán", fecha: "27 Jun 17:10" },
     { id: 71, local: "Argelia", visita: "Austria", fecha: "27 Jun 14:40" },
     { id: 72, local: "Jordania", visita: "Argentina", fecha: "27 Jun 14:40" }
-];
+  ];
 
   const banderas = {
-    "México": "🇲🇽", "Sudáfrica": "🇿🇦", "Corea del Sur": "🇰🇷", "República Checa": "🇨🇿",
-    "Canadá": "🇨🇦", "Bosnia y Herzegovina": "🇧🇦", "Estados Unidos": "🇺🇸", "Paraguay": "🇵🇾",
+    "México": "🇲🇽", "Sudáfrica": "🇿🇦", "Corea del Sur": "🇰🇷", "Rep. De Corea": "🇰🇷", "República Checa": "🇨🇿", "Rep. Checa": "🇨🇿",
+    "Canadá": "🇨🇦", "Bosnia y Herzegovina": "🇧🇦", "Bosnia": "🇧🇦", "Estados Unidos": "🇺🇸", "USA": "🇺🇸", "Paraguay": "🇵🇾",
     "Catar": "🇶🇦", "Suiza": "🇨🇭", "Brasil": "🇧🇷", "Marruecos": "🇲🇦", "Haití": "🇭🇹", 
-    "Escocia": "🏴󠁧󠁢󠁳󠁣󠁴󠁿", "Australia": "🇦🇺", "Turquía": "🇹🇷", "Alemania": "🇩🇪", "Curazao": "🇨🇼",
-    "Países Bajos": "🇳🇱", "Japón": "🇯🇵", "Costa de Marfil": "🇨🇮", "Ecuador": "🇪🇨", 
-    "Suecia": "🇸🇪", "Túnez": "🇹🇳", "Bélgica": "🇧🇪", "Egipto": "🇪🇬", "Irán": "🇮🇷", 
-    "Nueva Zelanda": "🇳🇿", "Arabia Saudita": "🇸🇦", "Uruguay": "🇺🇾", "España": "🇪🇸", 
+    "Escocia": "🏴󠁧󠁢󠁳󠁣󠁴󠁿", "Australia": "🇦🇺", "Australía": "🇦🇺", "Turquía": "🇹🇷", "Alemania": "🇩🇪", "Curazao": "🇨🇼",
+    "Países Bajos": "🇳🇱", "Paises Bajos": "🇳🇱", "Japón": "🇯🇵", "Costa de Marfil": "🇨🇮", "Costa de marfil": "🇨🇮", "Ecuador": "🇪🇨", 
+    "Suecia": "🇸🇪", "Túnez": "🇹🇳", "Bélgica": "🇧🇪", "Egipto": "🇪🇬", "Irán": "🇮🇷", "IR Iran": "🇮🇷", 
+    "Nueva Zelanda": "🇳🇿", "Arabia Saudita": "🇸🇦", "Arabia Saudi": "🇸🇦", "Arabía Saudí": "🇸🇦", "Uruguay": "🇺🇾", "España": "🇪🇸", 
     "Cabo Verde": "🇨🇻", "Francia": "🇫🇷", "Senegal": "🇸🇳", "Irak": "🇮🇶", "Noruega": "🇳🇴",
     "Argentina": "🇦🇷", "Argelia": "🇩🇿", "Austria": "🇦🇹", "Jordania": "🇯🇴", "Uzbekistán": "🇺🇿",
     "Colombia": "🇨🇴", "Portugal": "🇵🇹", "RD Congo": "🇨🇩", "Ghana": "🇬🇭", "Panamá": "🇵🇦",
@@ -141,7 +141,7 @@ export default function QuinielaManual() {
   };
 
   const resultadosOficiales = {
-    1: "2 - 0",// partido 1: Mexico vs sudafrica
+    1: "2 - 0",
     2: "2 - 1",
     3: "1 - 1",
     4: "4 - 1",
@@ -157,9 +157,6 @@ export default function QuinielaManual() {
     14: "1 - 1",
     15: "1 - 1",
     16: "2 - 2",
-
-
-
   };
 
   const calcularPuntos = (prono, real) => {
@@ -238,7 +235,35 @@ export default function QuinielaManual() {
           </h3>
 
           {partidos.map(p => {
-            const marcadorMostrado = diccionariosPronosticos[pronosticadorActivo]?.[p.id] || "-";
+            const prono = diccionariosPronosticos[pronosticadorActivo]?.[p.id] || "-";
+            const resultadoOficial = resultadosOficiales[p.id];
+            
+            // Colores por defecto (partido no jugado)
+            let colorBorde = 'var(--accent)';
+            let colorTexto = 'var(--accent)';
+            let bgColor = '#0a0e17';
+
+            // Lógica de colores si el partido ya terminó
+            if (resultadoOficial && prono !== "-") {
+              const puntos = calcularPuntos(prono, resultadoOficial);
+              if (puntos === 2) {
+                colorBorde = '#28a745'; // Verde (Exacto)
+                colorTexto = '#28a745';
+                bgColor = 'rgba(40, 167, 69, 0.1)'; // Fondo verde sutil
+              } else if (puntos === 1) {
+                colorBorde = 'var(--accent)'; // Azul (Tendencia)
+                colorTexto = 'var(--accent)';
+                bgColor = 'rgba(56, 189, 248, 0.1)'; // Fondo azul sutil
+              } else {
+                colorBorde = '#dc3545'; // Rojo (Fallo)
+                colorTexto = '#dc3545';
+                bgColor = 'rgba(220, 53, 69, 0.1)'; // Fondo rojo sutil
+              }
+            } else if (!resultadoOficial && prono === "-") {
+               colorBorde = '#444';
+               colorTexto = '#888';
+            }
+
             return (
               <div key={p.id} className="fila-partido" style={{
                 display: 'grid',
@@ -253,25 +278,33 @@ export default function QuinielaManual() {
                   {banderas[p.local] || '🏳️'} <b>{p.local}</b>
                 </span>
 
+                {/* Recuadro del Marcador (Pronóstico) dinámico */}
                 <div style={{ 
-                  backgroundColor: '#0a0e17', 
+                  backgroundColor: bgColor, 
                   padding: '5px 12px', 
                   borderRadius: '6px', 
-                  border: '1px solid var(--accent)',
+                  border: `1px solid ${colorBorde}`,
                   fontWeight: 'bold', 
                   fontSize: '1.1rem',
-                  color: 'var(--accent)',
-                  textAlign: 'center'
+                  color: colorTexto,
+                  textAlign: 'center',
+                  transition: 'all 0.3s ease'
                 }}>
-                  {marcadorMostrado}
+                  {prono}
                 </div>
 
                 <span style={{ textAlign: 'left', fontSize: '0.9rem', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                   <b>{p.visita}</b> {banderas[p.visita] || '🏳️'}
                 </span>
                 
-                <span style={{ gridColumn: '1 / -1', textAlign: 'center', fontSize: '0.7rem', color: '#888', marginTop: '5px' }}>
+                {/* Fecha y Resultado Real si existe */}
+                <span style={{ gridColumn: '1 / -1', textAlign: 'center', fontSize: '0.75rem', color: '#888', marginTop: '5px' }}>
                   {p.fecha}
+                  {resultadoOficial && (
+                    <span style={{ color: colorTexto, marginLeft: '10px', fontWeight: 'bold' }}>
+                      (Real: {resultadoOficial})
+                    </span>
+                  )}
                 </span>
               </div>
             );
@@ -355,6 +388,7 @@ export default function QuinielaManual() {
           </table>
         </div>
       )}
+
       {/* PESTAÑA: COMPARATIVA */}
       {activeTab === 'comparativa' && (
         <div className="card">
@@ -388,7 +422,7 @@ export default function QuinielaManual() {
                         whiteSpace: 'nowrap', 
                         position: 'sticky', 
                         left: 0, 
-                        backgroundColor: '#151b27', /* Color de fondo de la tarjeta */
+                        backgroundColor: '#151b27', 
                         borderRight: '1px solid #333',
                         zIndex: 1
                       }}>
@@ -404,7 +438,7 @@ export default function QuinielaManual() {
                       
                       {participantes.map(participante => {
                         const prono = diccionariosPronosticos[participante.id]?.[p.id] || "-";
-                        let colorProno = '#fff'; // Color blanco por defecto
+                        let colorProno = '#fff'; 
                         
                         // Lógica de colores si el partido ya terminó
                         if (resultadoOficial && prono !== "-") {
