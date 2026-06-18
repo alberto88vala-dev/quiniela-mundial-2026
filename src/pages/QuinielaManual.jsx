@@ -166,9 +166,9 @@ export default function QuinielaManual() {
     23: "1 - 0",
     24: "1 - 3",
     25: "1 - 1",
-    26: "2 - 0",
-    27: "4 - 1",
-    28: "2 - 0",
+    26: "4 - ",
+    27: "2 - 0",
+
   };
 
   const calcularPuntos = (prono, real) => {
