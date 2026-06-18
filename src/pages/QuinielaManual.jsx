@@ -6,7 +6,7 @@ export default function QuinielaManual() {
 
   const marcadorMundial = {
     partido: "Rep. Checa vs Sudáfrica",
-    resultado: "1 - 0"
+    resultado: "1 - 1"
   };
 
   const partidos = [
@@ -165,7 +165,7 @@ export default function QuinielaManual() {
     22: "4 - 2",
     23: "1 - 0",
     24: "1 - 3",
-    25: "1 - 0",
+    25: "1 - 1",
   };
 
   const calcularPuntos = (prono, real) => {
