@@ -5,7 +5,7 @@ export default function QuinielaManual() {
   const [pronosticadorActivo, setPronosticadorActivo] = useState('betin');
 
   const marcadorMundial = {
-    partido:  "Rep. Checa vs Sudáfrica",
+    partido: "Rep. Checa vs Sudáfrica",
     resultado: "1 - 0"
   };
 
@@ -191,25 +191,29 @@ export default function QuinielaManual() {
 
   return (
     <>
-      {/* ESTILOS ORGÁNICOS E INNOVADORES:
-        Aquí definimos la nueva paleta de colores (naranja dominante, azules y verdes).
-        Usamos bordes muy curvos (borderRadius de 30px o 40px) para el efecto orgánico de la imagen.
+      {/* JERARQUÍA ESTRICTA DE COLORES:
+        --naranja: Fondo principal, domina y atrapa la atención.
+        --morado: Tarjetas centrales y bloques, da volumen y contraste.
+        --amarillo: Textos informativos, títulos, acentos.
+        --azul: Pestañas, textos secundarios.
+        --verde: Aciertos de 2 puntos, coronas/iconos.
+        --blanco: Textos base.
+        --rojo: Exclusivo para marcadores de 0 puntos.
       */}
       <style>{`
         :root {
-          --orange-primary: #FF6B00;
-          --orange-light: #FF8C00;
-          --blue-sub: #00B4D8;
-          --blue-dark: #0B1325;
-          --blue-card: #151F32;
-          --green-sub: #00E676;
-          --text-light: #FFFFFF;
-          --text-muted: #8E9BB0;
+          --naranja: #F28C00;
+          --morado: #6B4C9A;
+          --verde: #62B557;
+          --amarillo: #FCD116;
+          --azul: #59B3E4;
+          --blanco: #FFFFFF;
+          --rojo: #E53935; /* Rojo clásico e inconfundible para el fallo */
         }
         
         body {
-          background-color: var(--blue-dark);
-          color: var(--text-light);
+          background-color: var(--naranja);
+          color: var(--blanco);
           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
           margin: 0;
           padding: 0;
@@ -222,32 +226,13 @@ export default function QuinielaManual() {
         }
 
         .header-organic {
-          background: linear-gradient(135deg, var(--orange-primary) 0%, var(--orange-light) 100%);
-          border-radius: 40px;
+          background-color: var(--morado);
+          border-radius: 12px;
           padding: 30px 20px;
           text-align: center;
           margin-bottom: 30px;
-          box-shadow: 0 10px 30px rgba(255, 107, 0, 0.2);
-          position: relative;
-          overflow: hidden;
-        }
-        
-        /* Ondas decorativas simuladas en el header */
-        .header-organic::before {
-          content: '';
-          position: absolute;
-          top: -50%; left: -10%;
-          width: 300px; height: 300px;
-          background: rgba(255,255,255,0.1);
-          border-radius: 50%;
-        }
-        .header-organic::after {
-          content: '';
-          position: absolute;
-          bottom: -50%; right: -10%;
-          width: 250px; height: 250px;
-          background: rgba(255,255,255,0.15);
-          border-radius: 50%;
+          box-shadow: 0 10px 20px rgba(107, 76, 154, 0.4);
+          border: 2px solid var(--amarillo);
         }
 
         .header-title {
@@ -255,70 +240,68 @@ export default function QuinielaManual() {
           margin: 0;
           font-weight: 800;
           letter-spacing: 2px;
-          text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-          position: relative;
-          z-index: 2;
+          color: var(--amarillo);
+          text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
         }
 
         .hero-card {
-          background: rgba(11, 19, 37, 0.5);
-          border: 1px solid rgba(255,255,255,0.2);
-          border-radius: 30px;
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid var(--azul);
+          border-radius: 12px;
           padding: 15px 30px;
           display: inline-block;
           margin-top: 15px;
-          position: relative;
-          z-index: 2;
-          backdrop-filter: blur(10px);
         }
 
         .organic-card {
-          background: var(--blue-card);
-          border-radius: 30px;
+          background-color: var(--morado);
+          border-radius: 12px;
           padding: 25px;
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-          border: 1px solid rgba(0, 180, 216, 0.15);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+          border: 2px solid var(--azul);
         }
 
         .tab-button {
           background: transparent;
-          color: var(--text-muted);
-          border: 2px solid transparent;
-          border-radius: 30px;
+          color: var(--blanco);
+          border: 2px solid var(--blanco);
+          border-radius: 20px;
           padding: 10px 20px;
           font-weight: bold;
           cursor: pointer;
           transition: all 0.3s ease;
         }
         .tab-button:hover {
-          color: var(--blue-sub);
+          color: var(--amarillo);
+          border-color: var(--amarillo);
         }
         .tab-button.active {
-          background: var(--blue-sub);
-          color: var(--blue-dark);
-          box-shadow: 0 4px 15px rgba(0, 180, 216, 0.4);
+          background: var(--amarillo);
+          color: var(--morado);
+          border-color: var(--amarillo);
+          box-shadow: 0 4px 15px rgba(252, 209, 22, 0.4);
         }
 
         .participant-btn {
           padding: 8px 18px;
           font-size: 0.9rem;
-          border-radius: 25px;
+          border-radius: 20px;
           cursor: pointer;
           font-weight: bold;
           white-space: nowrap;
           transition: all 0.3s ease;
-          background: rgba(255,255,255,0.05);
-          color: var(--text-muted);
+          background: rgba(255,255,255,0.1);
+          color: var(--blanco);
           border: 1px solid transparent;
         }
         .participant-btn:hover {
-          background: rgba(255, 107, 0, 0.1);
-          color: var(--orange-primary);
+          background: rgba(89, 179, 228, 0.2);
+          color: var(--azul);
         }
         .participant-btn.active {
-          background: linear-gradient(90deg, var(--orange-primary), var(--orange-light));
-          color: #fff;
-          box-shadow: 0 4px 12px rgba(255, 107, 0, 0.4);
+          background: var(--azul);
+          color: var(--morado);
+          box-shadow: 0 4px 12px rgba(89, 179, 228, 0.4);
         }
 
         .match-row {
@@ -327,48 +310,45 @@ export default function QuinielaManual() {
           align-items: center;
           gap: 15px;
           padding: 18px 10px;
-          border-bottom: 1px dashed rgba(255,255,255,0.1);
+          border-bottom: 1px dashed rgba(255,255,255,0.2);
           transition: background 0.3s;
-          border-radius: 15px;
         }
         .match-row:hover {
-          background: rgba(255,255,255,0.03);
+          background: rgba(255,255,255,0.05);
         }
 
-        /* Colores dinámicos para los pronósticos */
+        /* REGLAS DE COLORES PARA MARCADORES (ROJO Y VERDE EXACTO) */
         .score-box {
           padding: 8px 16px;
-          border-radius: 20px; /* Bordes redondeados en los marcadores */
+          border-radius: 8px;
           font-weight: 800;
           font-size: 1.1rem;
           text-align: center;
-          transition: all 0.3s ease;
-          background: var(--blue-dark);
+          background: rgba(0,0,0,0.2);
         }
-        .score-pending { border: 2px solid var(--blue-sub); color: var(--blue-sub); }
-        .score-exact { border: 2px solid var(--green-sub); color: var(--green-sub); background: rgba(0, 230, 118, 0.1); }
-        .score-tendency { border: 2px solid var(--blue-sub); color: var(--blue-sub); background: rgba(0, 180, 216, 0.1); }
-        .score-fail { border: 2px solid #FF3333; color: #FF3333; background: rgba(255, 51, 51, 0.1); }
-        .score-empty { border: 2px solid #444; color: #888; }
+        
+        .score-pending { border: 2px solid var(--blanco); color: var(--blanco); }
+        .score-exact { border: 2px solid var(--verde); color: var(--verde); background: rgba(98, 181, 87, 0.15); }
+        .score-tendency { border: 2px solid var(--azul); color: var(--azul); background: rgba(89, 179, 228, 0.15); }
+        .score-fail { border: 2px solid var(--rojo); color: var(--rojo); background: rgba(229, 57, 53, 0.15); }
+        .score-empty { border: 2px solid #aaa; color: #ccc; }
         
       `}</style>
 
       <div className="app-container">
         
-        {/* ENCABEZADO ORGÁNICO Y NARANJA */}
         <header className="header-organic">
           <h1 className="header-title">QUINIELA 2026</h1>
           <div className="hero-card">
-            <p style={{ margin: '0 0 5px 0', fontSize: '0.9rem', color: 'rgba(255,255,255,0.8)' }}>
+            <p style={{ margin: '0 0 5px 0', fontSize: '0.9rem', color: 'var(--blanco)' }}>
               {marcadorMundial.partido}
             </p>
-            <h2 style={{ margin: 0, color: '#fff', fontSize: '1.8rem' }}>
+            <h2 style={{ margin: 0, color: 'var(--amarillo)', fontSize: '1.8rem' }}>
               {marcadorMundial.resultado}
             </h2>
           </div>
         </header>
 
-        {/* NAVEGACIÓN */}
         <nav style={{ display: 'flex', justifyContent: 'center', marginBottom: '25px', flexWrap: 'wrap', gap: '15px' }}>
           <button className={`tab-button ${activeTab === 'pronosticar' ? 'active' : ''}`} onClick={() => setActiveTab('pronosticar')}>⚽ Pronósticos</button>
           <button className={`tab-button ${activeTab === 'anteriores' ? 'active' : ''}`} onClick={() => setActiveTab('anteriores')}>📅 Resultados</button>
@@ -376,7 +356,6 @@ export default function QuinielaManual() {
           <button className={`tab-button ${activeTab === 'comparativa' ? 'active' : ''}`} onClick={() => setActiveTab('comparativa')}>📊 Comparativa</button>
         </nav>
 
-        {/* PESTAÑA: PRONÓSTICOS */}
         {activeTab === 'pronosticar' && (
           <div className="organic-card">
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '10px', marginBottom: '30px' }}>
@@ -390,7 +369,7 @@ export default function QuinielaManual() {
               ))}
             </div>
 
-            <h3 style={{textAlign: 'center', marginBottom: '20px', color: 'var(--orange-primary)'}}>
+            <h3 style={{textAlign: 'center', marginBottom: '20px', color: 'var(--amarillo)'}}>
               Pronósticos de {participantes.find(p => p.id === pronosticadorActivo)?.nombre}
             </h3>
 
@@ -401,16 +380,16 @@ export default function QuinielaManual() {
               let scoreClass = 'score-pending';
               if (resultadoOficial && prono !== "-") {
                 const puntos = calcularPuntos(prono, resultadoOficial);
-                if (puntos === 2) scoreClass = 'score-exact'; // Verde
-                else if (puntos === 1) scoreClass = 'score-tendency'; // Azul
+                if (puntos === 2) scoreClass = 'score-exact'; // Verde Hoja
+                else if (puntos === 1) scoreClass = 'score-tendency'; // Azul Celeste
                 else scoreClass = 'score-fail'; // Rojo
               } else if (!resultadoOficial && prono === "-") {
-                 scoreClass = 'score-empty'; // Gris
+                 scoreClass = 'score-empty'; 
               }
 
               return (
                 <div key={p.id} className="match-row">
-                  <span style={{ textAlign: 'right', fontSize: '1rem' }}>
+                  <span style={{ textAlign: 'right', fontSize: '1rem', color: 'var(--blanco)' }}>
                     {banderas[p.local]} <b>{p.local}</b>
                   </span>
 
@@ -418,14 +397,14 @@ export default function QuinielaManual() {
                     {prono}
                   </div>
 
-                  <span style={{ textAlign: 'left', fontSize: '1rem' }}>
+                  <span style={{ textAlign: 'left', fontSize: '1rem', color: 'var(--blanco)' }}>
                     <b>{p.visita}</b> {banderas[p.visita]}
                   </span>
                   
-                  <span style={{ gridColumn: '1 / -1', textAlign: 'center', fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '5px' }}>
+                  <span style={{ gridColumn: '1 / -1', textAlign: 'center', fontSize: '0.8rem', color: 'rgba(255,255,255,0.7)', marginTop: '5px' }}>
                     {p.fecha}
                     {resultadoOficial && (
-                      <span style={{ marginLeft: '10px', fontWeight: 'bold', color: scoreClass === 'score-exact' ? 'var(--green-sub)' : scoreClass === 'score-tendency' ? 'var(--blue-sub)' : '#FF3333' }}>
+                      <span style={{ marginLeft: '10px', fontWeight: 'bold', color: scoreClass === 'score-exact' ? 'var(--verde)' : scoreClass === 'score-tendency' ? 'var(--azul)' : 'var(--rojo)' }}>
                         (Real: {resultadoOficial})
                       </span>
                     )}
@@ -436,10 +415,9 @@ export default function QuinielaManual() {
           </div>
         )}
 
-        {/* PESTAÑA: RESULTADOS */}
         {activeTab === 'anteriores' && (
           <div className="organic-card">
-             <h3 style={{textAlign: 'center', marginBottom: '20px', color: 'var(--orange-primary)'}}>Resultados Oficiales</h3>
+             <h3 style={{textAlign: 'center', marginBottom: '20px', color: 'var(--amarillo)'}}>Resultados Oficiales</h3>
              {partidos.map(p => {
                const resultadoOficial = resultadosOficiales[p.id];
                return (
@@ -449,10 +427,10 @@ export default function QuinielaManual() {
                   </span>
 
                   <div style={{ textAlign: 'center' }}>
-                    <div className={`score-box ${resultadoOficial ? 'score-exact' : 'score-empty'}`} style={{ border: resultadoOficial ? '2px solid var(--orange-primary)' : '', color: resultadoOficial ? 'var(--orange-primary)' : '', background: resultadoOficial ? 'rgba(255, 107, 0, 0.1)' : '' }}>
+                    <div className={`score-box ${resultadoOficial ? 'score-exact' : 'score-empty'}`} style={{ border: resultadoOficial ? '2px solid var(--verde)' : '', color: resultadoOficial ? 'var(--verde)' : '' }}>
                       {resultadoOficial ? resultadoOficial : "0 - 0"}
                     </div>
-                    <span style={{fontSize: '0.7rem', fontWeight: 'bold', color: resultadoOficial ? 'var(--orange-primary)' : 'var(--text-muted)', display: 'block', marginTop: '6px', letterSpacing: '1px'}}>
+                    <span style={{fontSize: '0.7rem', fontWeight: 'bold', color: resultadoOficial ? 'var(--verde)' : 'rgba(255,255,255,0.5)', display: 'block', marginTop: '6px', letterSpacing: '1px'}}>
                        {resultadoOficial ? "FINALIZADO" : "POR DEFINIR"}
                     </span>
                   </div>
@@ -461,7 +439,7 @@ export default function QuinielaManual() {
                     <b>{p.visita}</b> {banderas[p.visita]}
                   </span>
                   
-                  <span style={{ gridColumn: '1 / -1', textAlign: 'center', fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '5px' }}>
+                  <span style={{ gridColumn: '1 / -1', textAlign: 'center', fontSize: '0.8rem', color: 'rgba(255,255,255,0.7)', marginTop: '5px' }}>
                     {p.fecha}
                   </span>
                 </div>
@@ -470,24 +448,23 @@ export default function QuinielaManual() {
           </div>
         )}
 
-        {/* PESTAÑA: RANKING */}
         {activeTab === 'tabla' && (
           <div className="organic-card">
-            <h3 style={{textAlign: 'center', marginBottom: '20px', color: 'var(--orange-primary)'}}>Tabla General de Puntos</h3>
+            <h3 style={{textAlign: 'center', marginBottom: '20px', color: 'var(--amarillo)'}}>Tabla General de Puntos</h3>
             <table style={{width: '100%', borderCollapse: 'collapse'}}>
               <thead>
-                <tr style={{borderBottom: '2px solid var(--blue-sub)', textAlign: 'left'}}>
-                  <th style={{padding: '15px', color: 'var(--blue-sub)'}}>Pos.</th>
-                  <th style={{padding: '15px', color: 'var(--blue-sub)'}}>Participante</th>
-                  <th style={{padding: '15px', textAlign: 'right', color: 'var(--blue-sub)'}}>Puntos</th>
+                <tr style={{borderBottom: '2px solid var(--azul)', textAlign: 'left'}}>
+                  <th style={{padding: '15px', color: 'var(--azul)'}}>Pos.</th>
+                  <th style={{padding: '15px', color: 'var(--azul)'}}>Participante</th>
+                  <th style={{padding: '15px', textAlign: 'right', color: 'var(--azul)'}}>Puntos</th>
                 </tr>
               </thead>
               <tbody>
                 {tablaRanking.map((participante, i) => (
-                  <tr key={i} style={{borderBottom: '1px dashed rgba(255,255,255,0.1)'}}>
-                    <td style={{padding: '15px', fontWeight: 'bold', color: i < 3 ? 'var(--orange-primary)' : 'var(--text-muted)'}}>{i + 1}</td>
+                  <tr key={i} style={{borderBottom: '1px dashed rgba(255,255,255,0.2)'}}>
+                    <td style={{padding: '15px', fontWeight: 'bold', color: i < 3 ? 'var(--amarillo)' : 'var(--blanco)'}}>{i + 1}</td>
                     <td style={{padding: '15px', fontSize: '1.1rem'}}>{participante.nombre}</td>
-                    <td style={{padding: '15px', textAlign: 'right', fontWeight: 'bold', color: 'var(--green-sub)', fontSize: '1.3rem'}}>
+                    <td style={{padding: '15px', textAlign: 'right', fontWeight: 'bold', color: 'var(--verde)', fontSize: '1.3rem'}}>
                       {participante.puntos}
                     </td>
                   </tr>
@@ -497,10 +474,9 @@ export default function QuinielaManual() {
           </div>
         )}
 
-        {/* PESTAÑA: COMPARATIVA */}
         {activeTab === 'comparativa' && (
           <div className="organic-card">
-            <h3 style={{textAlign: 'center', marginBottom: '20px', color: 'var(--orange-primary)'}}>Comparativa General</h3>
+            <h3 style={{textAlign: 'center', marginBottom: '20px', color: 'var(--amarillo)'}}>Comparativa General</h3>
             
             <div style={{ width: '100%', overflowX: 'auto', paddingBottom: '15px' }}>
               <table style={{width: '100%', borderCollapse: 'separate', borderSpacing: 0, minWidth: '900px'}}>
@@ -508,15 +484,15 @@ export default function QuinielaManual() {
                   <tr>
                     <th style={{
                       padding: '15px', textAlign: 'left', position: 'sticky', left: 0, 
-                      backgroundColor: 'var(--blue-card)', zIndex: 10, 
-                      borderBottom: '2px solid var(--blue-sub)', borderRight: '1px solid rgba(255,255,255,0.1)', color: 'var(--blue-sub)'
+                      backgroundColor: 'var(--morado)', zIndex: 10, 
+                      borderBottom: '2px solid var(--azul)', borderRight: '1px solid rgba(255,255,255,0.2)', color: 'var(--azul)'
                     }}>
                       Partido
                     </th>
                     {participantes.map(participante => (
                       <th key={participante.id} style={{
                         padding: '15px', whiteSpace: 'nowrap', fontSize: '0.9rem',
-                        borderBottom: '2px solid var(--blue-sub)', textAlign: 'center', color: 'var(--blue-sub)'
+                        borderBottom: '2px solid var(--azul)', textAlign: 'center', color: 'var(--azul)'
                       }}>
                         {participante.nombre}
                       </th>
@@ -530,13 +506,13 @@ export default function QuinielaManual() {
                       <tr key={p.id}>
                         <td style={{
                           padding: '15px', textAlign: 'left', whiteSpace: 'nowrap', position: 'sticky', left: 0, 
-                          backgroundColor: 'var(--blue-card)', borderRight: '1px solid rgba(255,255,255,0.1)',
-                          borderBottom: '1px dashed rgba(255,255,255,0.1)', zIndex: 5
+                          backgroundColor: 'var(--morado)', borderRight: '1px solid rgba(255,255,255,0.2)',
+                          borderBottom: '1px dashed rgba(255,255,255,0.2)', zIndex: 5
                         }}>
-                          <span style={{fontSize: '0.75rem', color: 'var(--text-muted)', display: 'block'}}>{p.fecha}</span>
-                          {banderas[p.local]} <span style={{fontSize: '0.9rem'}}><b>{p.local}</b> vs <b>{p.visita}</b></span> {banderas[p.visita]}
+                          <span style={{fontSize: '0.75rem', color: 'rgba(255,255,255,0.7)', display: 'block'}}>{p.fecha}</span>
+                          {banderas[p.local]} <span style={{fontSize: '0.9rem', color: 'var(--blanco)'}}><b>{p.local}</b> vs <b>{p.visita}</b></span> {banderas[p.visita]}
                           {resultadoOficial && (
-                            <span style={{display: 'block', fontSize: '0.8rem', color: 'var(--orange-primary)', marginTop: '4px'}}>
+                            <span style={{display: 'block', fontSize: '0.8rem', color: 'var(--verde)', marginTop: '4px'}}>
                               Real: {resultadoOficial}
                             </span>
                           )}
@@ -544,20 +520,20 @@ export default function QuinielaManual() {
                         
                         {participantes.map(participante => {
                           const prono = diccionariosPronosticos[participante.id]?.[p.id] || "-";
-                          let colorProno = 'var(--text-light)'; 
+                          let colorProno = 'var(--blanco)'; 
                           if (resultadoOficial && prono !== "-") {
                             const puntos = calcularPuntos(prono, resultadoOficial);
-                            if (puntos === 2) colorProno = 'var(--green-sub)'; 
-                            else if (puntos === 1) colorProno = 'var(--blue-sub)'; 
-                            else colorProno = '#FF3333'; 
+                            if (puntos === 2) colorProno = 'var(--verde)'; 
+                            else if (puntos === 1) colorProno = 'var(--azul)'; 
+                            else colorProno = 'var(--rojo)'; 
                           } else if (!resultadoOficial && prono === "-") {
-                            colorProno = 'var(--text-muted)'; 
+                            colorProno = 'rgba(255,255,255,0.5)'; 
                           }
 
                           return (
                             <td key={participante.id} style={{
                               padding: '15px', fontWeight: 'bold', color: colorProno, whiteSpace: 'nowrap',
-                              borderBottom: '1px dashed rgba(255,255,255,0.1)', textAlign: 'center'
+                              borderBottom: '1px dashed rgba(255,255,255,0.2)', textAlign: 'center'
                             }}>
                               {prono}
                             </td>
