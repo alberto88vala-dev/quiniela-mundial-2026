@@ -5,8 +5,8 @@ export default function QuinielaManual() {
   const [pronosticadorActivo, setPronosticadorActivo] = useState('betin');
 
   const marcadorMundial = {
-    partido: " UZBEKISTAN VS COLOMBIA",
-    resultado: " 1 - 3"
+    partido:  "Rep. Checa vs Sudáfrica",
+    resultado: "1 - 0"
   };
 
   const partidos = [
@@ -30,10 +30,10 @@ export default function QuinielaManual() {
     { id: 18, local: "Irak", visita: "Noruega", fecha: "16 Jun 15:45" },
     { id: 19, local: "Argentina", visita: "Argelia", fecha: "16 Jun 18:40" },
     { id: 20, local: "Austria", visita: "Jordania", fecha: "16 Jun 21:45" },
-    { id: 21, local: "Portugal", visita: "RD Congo", fecha: "17 Jun 11:00" },
-    { id: 22, local: "Inglaterra", visita: "Croacia", fecha: "17 Jun 14:00" },
+    { id: 21, local: "Portugal", visita: "RD Congo", fecha: "17 Jun 19:45" },
+    { id: 22, local: "Inglaterra", visita: "Croacia", fecha: "17 Jun 10:45" },
     { id: 23, local: "Ghana", visita: "Panamá", fecha: "17 Jun 16:45" },
-    { id: 24, local: "Uzbekistán", visita: "Colombia", fecha: "17 Jun 20:00" },
+    { id: 24, local: "Uzbekistán", visita: "Colombia", fecha: "17 Jun 13:40" },
     { id: 25, local: "Rep. Checa", visita: "Sudáfrica", fecha: "18 Jun 09:45" },
     { id: 26, local: "Suiza", visita: "Bosnia", fecha: "18 Jun 18:30" },
     { id: 27, local: "Canadá", visita: "Catar", fecha: "18 Jun 12:45" },
@@ -161,12 +161,11 @@ export default function QuinielaManual() {
     18: "1 - 4",
     19: "3 - 0",
     20: "3 - 1",
-    21: "1 - 1",
+    21: "4 - 2",
     22: "4 - 2",
     23: "1 - 0",
     24: "1 - 3",
-
-    
+    25: "1 - 0",
   };
 
   const calcularPuntos = (prono, real) => {
@@ -191,314 +190,389 @@ export default function QuinielaManual() {
   }).sort((a, b) => b.puntos - a.puntos);
 
   return (
-    <div className="container">
-      <header className="header-vino" style={{textAlign: 'center', padding: '20px'}}>
-        <h1>QUINIELA 2026</h1>
-        <div className="card">
-          <p>{marcadorMundial.partido}</p>
-          <h2 style={{color: 'var(--accent)'}}>{marcadorMundial.resultado}</h2>
-        </div>
-      </header>
+    <>
+      {/* ESTILOS ORGÁNICOS E INNOVADORES:
+        Aquí definimos la nueva paleta de colores (naranja dominante, azules y verdes).
+        Usamos bordes muy curvos (borderRadius de 30px o 40px) para el efecto orgánico de la imagen.
+      */}
+      <style>{`
+        :root {
+          --orange-primary: #FF6B00;
+          --orange-light: #FF8C00;
+          --blue-sub: #00B4D8;
+          --blue-dark: #0B1325;
+          --blue-card: #151F32;
+          --green-sub: #00E676;
+          --text-light: #FFFFFF;
+          --text-muted: #8E9BB0;
+        }
+        
+        body {
+          background-color: var(--blue-dark);
+          color: var(--text-light);
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          margin: 0;
+          padding: 0;
+        }
 
-      <nav className="tabs" style={{ display: 'flex', justifyContent: 'space-around', marginBottom: '20px', flexWrap: 'wrap', gap: '10px' }}>
-        <button className={activeTab === 'pronosticar' ? 'active' : ''} onClick={() => setActiveTab('pronosticar')}>⚽ Pronósticos</button>
-        <button className={activeTab === 'anteriores' ? 'active' : ''} onClick={() => setActiveTab('anteriores')}>📅 Resultados</button>
-        <button className={activeTab === 'tabla' ? 'active' : ''} onClick={() => setActiveTab('tabla')}>🏆 Ranking</button>
-        <button className={activeTab === 'comparativa' ? 'active' : ''} onClick={() => setActiveTab('comparativa')}>📊 Comparativa</button>
-      </nav>
+        .app-container {
+          max-width: 1000px;
+          margin: 0 auto;
+          padding: 20px;
+        }
 
-      {/* PESTAÑA: PRONÓSTICOS */}
-      {activeTab === 'pronosticar' && (
-        <div className="card">
-          <div style={{ 
-            display: 'flex', 
-            flexWrap: 'wrap', 
-            justifyContent: 'center', 
-            gap: '8px', 
-            marginBottom: '25px',
-            padding: '0 10px'
-          }}>
-            {participantes.map(participante => (
-              <button 
-                key={participante.id}
-                onClick={() => setPronosticadorActivo(participante.id)} 
-                style={{ 
-                  padding: '8px 16px', 
-                  fontSize: '0.9rem', 
-                  background: pronosticadorActivo === participante.id ? 'var(--accent)' : '#2a2a2a', 
-                  color: pronosticadorActivo === participante.id ? '#000' : '#fff', 
-                  border: pronosticadorActivo === participante.id ? '2px solid transparent' : '2px solid #444', 
-                  borderRadius: '20px', 
-                  cursor: 'pointer', 
-                  fontWeight: 'bold', 
-                  whiteSpace: 'nowrap', 
-                  transition: 'all 0.3s ease',
-                  boxShadow: pronosticadorActivo === participante.id ? '0 4px 10px rgba(0, 255, 136, 0.3)' : 'none'
-                }}>
-                {participante.nombre}
-              </button>
-            ))}
+        .header-organic {
+          background: linear-gradient(135deg, var(--orange-primary) 0%, var(--orange-light) 100%);
+          border-radius: 40px;
+          padding: 30px 20px;
+          text-align: center;
+          margin-bottom: 30px;
+          box-shadow: 0 10px 30px rgba(255, 107, 0, 0.2);
+          position: relative;
+          overflow: hidden;
+        }
+        
+        /* Ondas decorativas simuladas en el header */
+        .header-organic::before {
+          content: '';
+          position: absolute;
+          top: -50%; left: -10%;
+          width: 300px; height: 300px;
+          background: rgba(255,255,255,0.1);
+          border-radius: 50%;
+        }
+        .header-organic::after {
+          content: '';
+          position: absolute;
+          bottom: -50%; right: -10%;
+          width: 250px; height: 250px;
+          background: rgba(255,255,255,0.15);
+          border-radius: 50%;
+        }
+
+        .header-title {
+          font-size: 2.5rem;
+          margin: 0;
+          font-weight: 800;
+          letter-spacing: 2px;
+          text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+          position: relative;
+          z-index: 2;
+        }
+
+        .hero-card {
+          background: rgba(11, 19, 37, 0.5);
+          border: 1px solid rgba(255,255,255,0.2);
+          border-radius: 30px;
+          padding: 15px 30px;
+          display: inline-block;
+          margin-top: 15px;
+          position: relative;
+          z-index: 2;
+          backdrop-filter: blur(10px);
+        }
+
+        .organic-card {
+          background: var(--blue-card);
+          border-radius: 30px;
+          padding: 25px;
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+          border: 1px solid rgba(0, 180, 216, 0.15);
+        }
+
+        .tab-button {
+          background: transparent;
+          color: var(--text-muted);
+          border: 2px solid transparent;
+          border-radius: 30px;
+          padding: 10px 20px;
+          font-weight: bold;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        .tab-button:hover {
+          color: var(--blue-sub);
+        }
+        .tab-button.active {
+          background: var(--blue-sub);
+          color: var(--blue-dark);
+          box-shadow: 0 4px 15px rgba(0, 180, 216, 0.4);
+        }
+
+        .participant-btn {
+          padding: 8px 18px;
+          font-size: 0.9rem;
+          border-radius: 25px;
+          cursor: pointer;
+          font-weight: bold;
+          white-space: nowrap;
+          transition: all 0.3s ease;
+          background: rgba(255,255,255,0.05);
+          color: var(--text-muted);
+          border: 1px solid transparent;
+        }
+        .participant-btn:hover {
+          background: rgba(255, 107, 0, 0.1);
+          color: var(--orange-primary);
+        }
+        .participant-btn.active {
+          background: linear-gradient(90deg, var(--orange-primary), var(--orange-light));
+          color: #fff;
+          box-shadow: 0 4px 12px rgba(255, 107, 0, 0.4);
+        }
+
+        .match-row {
+          display: grid;
+          grid-template-columns: 1fr auto 1fr;
+          align-items: center;
+          gap: 15px;
+          padding: 18px 10px;
+          border-bottom: 1px dashed rgba(255,255,255,0.1);
+          transition: background 0.3s;
+          border-radius: 15px;
+        }
+        .match-row:hover {
+          background: rgba(255,255,255,0.03);
+        }
+
+        /* Colores dinámicos para los pronósticos */
+        .score-box {
+          padding: 8px 16px;
+          border-radius: 20px; /* Bordes redondeados en los marcadores */
+          font-weight: 800;
+          font-size: 1.1rem;
+          text-align: center;
+          transition: all 0.3s ease;
+          background: var(--blue-dark);
+        }
+        .score-pending { border: 2px solid var(--blue-sub); color: var(--blue-sub); }
+        .score-exact { border: 2px solid var(--green-sub); color: var(--green-sub); background: rgba(0, 230, 118, 0.1); }
+        .score-tendency { border: 2px solid var(--blue-sub); color: var(--blue-sub); background: rgba(0, 180, 216, 0.1); }
+        .score-fail { border: 2px solid #FF3333; color: #FF3333; background: rgba(255, 51, 51, 0.1); }
+        .score-empty { border: 2px solid #444; color: #888; }
+        
+      `}</style>
+
+      <div className="app-container">
+        
+        {/* ENCABEZADO ORGÁNICO Y NARANJA */}
+        <header className="header-organic">
+          <h1 className="header-title">QUINIELA 2026</h1>
+          <div className="hero-card">
+            <p style={{ margin: '0 0 5px 0', fontSize: '0.9rem', color: 'rgba(255,255,255,0.8)' }}>
+              {marcadorMundial.partido}
+            </p>
+            <h2 style={{ margin: 0, color: '#fff', fontSize: '1.8rem' }}>
+              {marcadorMundial.resultado}
+            </h2>
           </div>
+        </header>
 
-          <h3 style={{textAlign: 'center', marginBottom: '20px', color: 'var(--accent)'}}>
-            Pronósticos
-          </h3>
+        {/* NAVEGACIÓN */}
+        <nav style={{ display: 'flex', justifyContent: 'center', marginBottom: '25px', flexWrap: 'wrap', gap: '15px' }}>
+          <button className={`tab-button ${activeTab === 'pronosticar' ? 'active' : ''}`} onClick={() => setActiveTab('pronosticar')}>⚽ Pronósticos</button>
+          <button className={`tab-button ${activeTab === 'anteriores' ? 'active' : ''}`} onClick={() => setActiveTab('anteriores')}>📅 Resultados</button>
+          <button className={`tab-button ${activeTab === 'tabla' ? 'active' : ''}`} onClick={() => setActiveTab('tabla')}>🏆 Ranking</button>
+          <button className={`tab-button ${activeTab === 'comparativa' ? 'active' : ''}`} onClick={() => setActiveTab('comparativa')}>📊 Comparativa</button>
+        </nav>
 
-          {partidos.map(p => {
-            const prono = diccionariosPronosticos[pronosticadorActivo]?.[p.id] || "-";
-            const resultadoOficial = resultadosOficiales[p.id];
-            
-            // Colores por defecto (partido no jugado)
-            let colorBorde = 'var(--accent)';
-            let colorTexto = 'var(--accent)';
-            let bgColor = '#0a0e17';
+        {/* PESTAÑA: PRONÓSTICOS */}
+        {activeTab === 'pronosticar' && (
+          <div className="organic-card">
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '10px', marginBottom: '30px' }}>
+              {participantes.map(participante => (
+                <button 
+                  key={participante.id}
+                  onClick={() => setPronosticadorActivo(participante.id)} 
+                  className={`participant-btn ${pronosticadorActivo === participante.id ? 'active' : ''}`}>
+                  {participante.nombre}
+                </button>
+              ))}
+            </div>
 
-            // Lógica de colores si el partido ya terminó
-            if (resultadoOficial && prono !== "-") {
-              const puntos = calcularPuntos(prono, resultadoOficial);
-              if (puntos === 2) {
-                colorBorde = '#28a745'; // Verde (Exacto)
-                colorTexto = '#28a745';
-                bgColor = 'rgba(40, 167, 69, 0.1)'; // Fondo verde sutil
-              } else if (puntos === 1) {
-                colorBorde = 'var(--accent)'; // Azul (Tendencia)
-                colorTexto = 'var(--accent)';
-                bgColor = 'rgba(56, 189, 248, 0.1)'; // Fondo azul sutil
-              } else {
-                colorBorde = '#dc3545'; // Rojo (Fallo)
-                colorTexto = '#dc3545';
-                bgColor = 'rgba(220, 53, 69, 0.1)'; // Fondo rojo sutil
+            <h3 style={{textAlign: 'center', marginBottom: '20px', color: 'var(--orange-primary)'}}>
+              Pronósticos de {participantes.find(p => p.id === pronosticadorActivo)?.nombre}
+            </h3>
+
+            {partidos.map(p => {
+              const prono = diccionariosPronosticos[pronosticadorActivo]?.[p.id] || "-";
+              const resultadoOficial = resultadosOficiales[p.id];
+              
+              let scoreClass = 'score-pending';
+              if (resultadoOficial && prono !== "-") {
+                const puntos = calcularPuntos(prono, resultadoOficial);
+                if (puntos === 2) scoreClass = 'score-exact'; // Verde
+                else if (puntos === 1) scoreClass = 'score-tendency'; // Azul
+                else scoreClass = 'score-fail'; // Rojo
+              } else if (!resultadoOficial && prono === "-") {
+                 scoreClass = 'score-empty'; // Gris
               }
-            } else if (!resultadoOficial && prono === "-") {
-               colorBorde = '#444';
-               colorTexto = '#888';
-            }
 
-            return (
-              <div key={p.id} className="fila-partido" style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr auto 1fr', 
-                alignItems: 'center',
-                gap: '10px',
-                padding: '15px 10px',
-                borderBottom: '1px solid #333',
-                backgroundColor: 'rgba(255,255,255,0.02)'
-              }}>
-                <span style={{ textAlign: 'right', fontSize: '0.9rem', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                  {banderas[p.local] || '🏳️'} <b>{p.local}</b>
-                </span>
+              return (
+                <div key={p.id} className="match-row">
+                  <span style={{ textAlign: 'right', fontSize: '1rem' }}>
+                    {banderas[p.local]} <b>{p.local}</b>
+                  </span>
 
-                {/* Recuadro del Marcador (Pronóstico) dinámico */}
-                <div style={{ 
-                  backgroundColor: bgColor, 
-                  padding: '5px 12px', 
-                  borderRadius: '6px', 
-                  border: `1px solid ${colorBorde}`,
-                  fontWeight: 'bold', 
-                  fontSize: '1.1rem',
-                  color: colorTexto,
-                  textAlign: 'center',
-                  transition: 'all 0.3s ease'
-                }}>
-                  {prono}
-                </div>
-
-                <span style={{ textAlign: 'left', fontSize: '0.9rem', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                  <b>{p.visita}</b> {banderas[p.visita] || '🏳️'}
-                </span>
-                
-                {/* Fecha y Resultado Real si existe */}
-                <span style={{ gridColumn: '1 / -1', textAlign: 'center', fontSize: '0.75rem', color: '#888', marginTop: '5px' }}>
-                  {p.fecha}
-                  {resultadoOficial && (
-                    <span style={{ color: colorTexto, marginLeft: '10px', fontWeight: 'bold' }}>
-                      (Real: {resultadoOficial})
-                    </span>
-                  )}
-                </span>
-              </div>
-            );
-          })}
-        </div>
-      )}
-
-      {/* PESTAÑA: RESULTADOS */}
-      {activeTab === 'anteriores' && (
-        <div className="card">
-           <h3 style={{textAlign: 'center', marginBottom: '20px', color: 'var(--text-muted)'}}>Resultados Oficiales</h3>
-           {partidos.map(p => {
-             const resultadoOficial = resultadosOficiales[p.id];
-             return (
-              <div key={p.id} className="fila-partido" style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr auto 1fr', 
-                alignItems: 'center',
-                gap: '10px',
-                padding: '15px 10px',
-                borderBottom: '1px solid #333',
-                backgroundColor: 'rgba(255,255,255,0.02)'
-              }}>
-                <span style={{ textAlign: 'right', fontSize: '0.9rem', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                  {banderas[p.local] || '🏳️'} <b>{p.local}</b>
-                </span>
-
-                <div style={{ textAlign: 'center' }}>
-                  <div style={{ 
-                    backgroundColor: '#0a0e17', 
-                    padding: '5px 12px', 
-                    borderRadius: '6px', 
-                    border: resultadoOficial ? '1px solid #28a745' : '1px solid #444',
-                    fontWeight: 'bold', 
-                    fontSize: '1.1rem',
-                    color: resultadoOficial ? '#fff' : 'var(--text-muted)'
-                  }}>
-                    {resultadoOficial ? resultadoOficial : "0 - 0"}
+                  <div className={`score-box ${scoreClass}`}>
+                    {prono}
                   </div>
-                  <span style={{fontSize: '10px', fontWeight: 'bold', color: resultadoOficial ? '#28a745' : 'var(--text-muted)', display: 'block', marginTop: '4px'}}>
-                     {resultadoOficial ? "FINALIZADO" : "POR DEFINIR"}
+
+                  <span style={{ textAlign: 'left', fontSize: '1rem' }}>
+                    <b>{p.visita}</b> {banderas[p.visita]}
+                  </span>
+                  
+                  <span style={{ gridColumn: '1 / -1', textAlign: 'center', fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '5px' }}>
+                    {p.fecha}
+                    {resultadoOficial && (
+                      <span style={{ marginLeft: '10px', fontWeight: 'bold', color: scoreClass === 'score-exact' ? 'var(--green-sub)' : scoreClass === 'score-tendency' ? 'var(--blue-sub)' : '#FF3333' }}>
+                        (Real: {resultadoOficial})
+                      </span>
+                    )}
                   </span>
                 </div>
+              );
+            })}
+          </div>
+        )}
 
-                <span style={{ textAlign: 'left', fontSize: '0.9rem', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                  <b>{p.visita}</b> {banderas[p.visita] || '🏳️'}
-                </span>
-                
-                <span style={{ gridColumn: '1 / -1', textAlign: 'center', fontSize: '0.7rem', color: '#888', marginTop: '5px' }}>
-                  {p.fecha}
-                </span>
-              </div>
-             );
-           })}
-        </div>
-      )}
+        {/* PESTAÑA: RESULTADOS */}
+        {activeTab === 'anteriores' && (
+          <div className="organic-card">
+             <h3 style={{textAlign: 'center', marginBottom: '20px', color: 'var(--orange-primary)'}}>Resultados Oficiales</h3>
+             {partidos.map(p => {
+               const resultadoOficial = resultadosOficiales[p.id];
+               return (
+                <div key={p.id} className="match-row">
+                  <span style={{ textAlign: 'right', fontSize: '1rem' }}>
+                    {banderas[p.local]} <b>{p.local}</b>
+                  </span>
 
-      {/* PESTAÑA: RANKING */}
-      {activeTab === 'tabla' && (
-        <div className="card">
-          <h3 style={{textAlign: 'center', marginBottom: '20px', color: 'var(--accent)'}}>Tabla General de Puntos</h3>
-          <table style={{width: '100%', borderCollapse: 'collapse'}}>
-            <thead>
-              <tr style={{borderBottom: '2px solid var(--accent)', textAlign: 'left'}}>
-                <th style={{padding: '10px'}}>Pos.</th>
-                <th style={{padding: '10px'}}>Participante</th>
-                <th style={{padding: '10px', textAlign: 'right'}}>Puntos</th>
-              </tr>
-            </thead>
-            <tbody>
-              {tablaRanking.map((participante, i) => (
-                <tr key={i} style={{borderBottom: '1px solid #333'}}>
-                  <td style={{padding: '10px', fontWeight: 'bold', color: 'var(--text-muted)'}}>{i + 1}</td>
-                  <td style={{padding: '10px'}}>{participante.nombre}</td>
-                  <td style={{padding: '10px', textAlign: 'right', fontWeight: 'bold', color: 'var(--accent)', fontSize: '1.2rem'}}>
-                    {participante.puntos}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+                  <div style={{ textAlign: 'center' }}>
+                    <div className={`score-box ${resultadoOficial ? 'score-exact' : 'score-empty'}`} style={{ border: resultadoOficial ? '2px solid var(--orange-primary)' : '', color: resultadoOficial ? 'var(--orange-primary)' : '', background: resultadoOficial ? 'rgba(255, 107, 0, 0.1)' : '' }}>
+                      {resultadoOficial ? resultadoOficial : "0 - 0"}
+                    </div>
+                    <span style={{fontSize: '0.7rem', fontWeight: 'bold', color: resultadoOficial ? 'var(--orange-primary)' : 'var(--text-muted)', display: 'block', marginTop: '6px', letterSpacing: '1px'}}>
+                       {resultadoOficial ? "FINALIZADO" : "POR DEFINIR"}
+                    </span>
+                  </div>
 
-      {/* PESTAÑA: COMPARATIVA */}
-      {activeTab === 'comparativa' && (
-        <div className="card">
-          <h3 style={{textAlign: 'center', marginBottom: '20px', color: 'var(--accent)'}}>Comparativa General</h3>
-          
-          {/* Contenedor con scroll horizontal para la tabla */}
-          <div style={{ width: '100%', overflowX: 'auto', paddingBottom: '10px' }}>
-            {/* LA SOLUCIÓN: Usar borderCollapse: 'separate' y borderSpacing: 0 */}
-            <table style={{width: '100%', borderCollapse: 'separate', borderSpacing: 0, minWidth: '900px'}}>
+                  <span style={{ textAlign: 'left', fontSize: '1rem' }}>
+                    <b>{p.visita}</b> {banderas[p.visita]}
+                  </span>
+                  
+                  <span style={{ gridColumn: '1 / -1', textAlign: 'center', fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '5px' }}>
+                    {p.fecha}
+                  </span>
+                </div>
+               );
+             })}
+          </div>
+        )}
+
+        {/* PESTAÑA: RANKING */}
+        {activeTab === 'tabla' && (
+          <div className="organic-card">
+            <h3 style={{textAlign: 'center', marginBottom: '20px', color: 'var(--orange-primary)'}}>Tabla General de Puntos</h3>
+            <table style={{width: '100%', borderCollapse: 'collapse'}}>
               <thead>
-                <tr>
-                  {/* Columna de partido pegajosa (sticky) */}
-                  <th style={{
-                    padding: '10px', 
-                    textAlign: 'left', 
-                    position: 'sticky', 
-                    left: 0, 
-                    backgroundColor: '#151b27', /* Mismo color de fondo que la tarjeta */
-                    zIndex: 10, 
-                    borderBottom: '2px solid var(--accent)',
-                    borderRight: '1px solid #333'
-                  }}>
-                    Partido
-                  </th>
-                  {participantes.map(participante => (
-                    <th key={participante.id} style={{
-                      padding: '10px', 
-                      whiteSpace: 'nowrap', 
-                      fontSize: '0.9rem',
-                      borderBottom: '2px solid var(--accent)',
-                      textAlign: 'center'
-                    }}>
-                      {participante.nombre}
-                    </th>
-                  ))}
+                <tr style={{borderBottom: '2px solid var(--blue-sub)', textAlign: 'left'}}>
+                  <th style={{padding: '15px', color: 'var(--blue-sub)'}}>Pos.</th>
+                  <th style={{padding: '15px', color: 'var(--blue-sub)'}}>Participante</th>
+                  <th style={{padding: '15px', textAlign: 'right', color: 'var(--blue-sub)'}}>Puntos</th>
                 </tr>
               </thead>
               <tbody>
-                {partidos.map(p => {
-                  const resultadoOficial = resultadosOficiales[p.id];
-                  
-                  return (
-                    <tr key={p.id} style={{ backgroundColor: 'rgba(255,255,255,0.02)' }}>
-                      <td style={{
-                        padding: '10px', 
-                        textAlign: 'left', 
-                        whiteSpace: 'nowrap', 
-                        position: 'sticky', 
-                        left: 0, 
-                        backgroundColor: '#151b27', /* Obligatorio para que no se transparente al deslizar */
-                        borderRight: '1px solid #333',
-                        borderBottom: '1px solid #333',
-                        zIndex: 5
-                      }}>
-                        <span style={{fontSize: '0.75rem', color: '#888', display: 'block'}}>{p.fecha}</span>
-                        {banderas[p.local]} <span style={{fontSize: '0.9rem'}}><b>{p.local}</b> vs <b>{p.visita}</b></span> {banderas[p.visita]}
-                        
-                        {resultadoOficial && (
-                          <span style={{display: 'block', fontSize: '0.8rem', color: '#28a745', marginTop: '4px'}}>
-                            Real: {resultadoOficial}
-                          </span>
-                        )}
-                      </td>
-                      
-                      {participantes.map(participante => {
-                        const prono = diccionariosPronosticos[participante.id]?.[p.id] || "-";
-                        let colorProno = '#fff'; 
-                        
-                        // Lógica de colores si el partido ya terminó
-                        if (resultadoOficial && prono !== "-") {
-                          const puntos = calcularPuntos(prono, resultadoOficial);
-                          if (puntos === 2) colorProno = '#28a745'; // Exacto (Verde)
-                          else if (puntos === 1) colorProno = 'var(--accent)'; // Tendencia (Azul)
-                          else colorProno = '#dc3545'; // Fallo (Rojo)
-                        } else if (!resultadoOficial && prono === "-") {
-                          colorProno = '#555'; // Gris para los vacíos
-                        }
-
-                        return (
-                          <td key={participante.id} style={{
-                            padding: '10px', 
-                            fontWeight: 'bold', 
-                            color: colorProno, 
-                            whiteSpace: 'nowrap',
-                            borderBottom: '1px solid #333',
-                            textAlign: 'center'
-                          }}>
-                            {prono}
-                          </td>
-                        );
-                      })}
-                    </tr>
-                  );
-                })}
+                {tablaRanking.map((participante, i) => (
+                  <tr key={i} style={{borderBottom: '1px dashed rgba(255,255,255,0.1)'}}>
+                    <td style={{padding: '15px', fontWeight: 'bold', color: i < 3 ? 'var(--orange-primary)' : 'var(--text-muted)'}}>{i + 1}</td>
+                    <td style={{padding: '15px', fontSize: '1.1rem'}}>{participante.nombre}</td>
+                    <td style={{padding: '15px', textAlign: 'right', fontWeight: 'bold', color: 'var(--green-sub)', fontSize: '1.3rem'}}>
+                      {participante.puntos}
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
-        </div>
-      )}
+        )}
 
-    </div>
+        {/* PESTAÑA: COMPARATIVA */}
+        {activeTab === 'comparativa' && (
+          <div className="organic-card">
+            <h3 style={{textAlign: 'center', marginBottom: '20px', color: 'var(--orange-primary)'}}>Comparativa General</h3>
+            
+            <div style={{ width: '100%', overflowX: 'auto', paddingBottom: '15px' }}>
+              <table style={{width: '100%', borderCollapse: 'separate', borderSpacing: 0, minWidth: '900px'}}>
+                <thead>
+                  <tr>
+                    <th style={{
+                      padding: '15px', textAlign: 'left', position: 'sticky', left: 0, 
+                      backgroundColor: 'var(--blue-card)', zIndex: 10, 
+                      borderBottom: '2px solid var(--blue-sub)', borderRight: '1px solid rgba(255,255,255,0.1)', color: 'var(--blue-sub)'
+                    }}>
+                      Partido
+                    </th>
+                    {participantes.map(participante => (
+                      <th key={participante.id} style={{
+                        padding: '15px', whiteSpace: 'nowrap', fontSize: '0.9rem',
+                        borderBottom: '2px solid var(--blue-sub)', textAlign: 'center', color: 'var(--blue-sub)'
+                      }}>
+                        {participante.nombre}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {partidos.map(p => {
+                    const resultadoOficial = resultadosOficiales[p.id];
+                    return (
+                      <tr key={p.id}>
+                        <td style={{
+                          padding: '15px', textAlign: 'left', whiteSpace: 'nowrap', position: 'sticky', left: 0, 
+                          backgroundColor: 'var(--blue-card)', borderRight: '1px solid rgba(255,255,255,0.1)',
+                          borderBottom: '1px dashed rgba(255,255,255,0.1)', zIndex: 5
+                        }}>
+                          <span style={{fontSize: '0.75rem', color: 'var(--text-muted)', display: 'block'}}>{p.fecha}</span>
+                          {banderas[p.local]} <span style={{fontSize: '0.9rem'}}><b>{p.local}</b> vs <b>{p.visita}</b></span> {banderas[p.visita]}
+                          {resultadoOficial && (
+                            <span style={{display: 'block', fontSize: '0.8rem', color: 'var(--orange-primary)', marginTop: '4px'}}>
+                              Real: {resultadoOficial}
+                            </span>
+                          )}
+                        </td>
+                        
+                        {participantes.map(participante => {
+                          const prono = diccionariosPronosticos[participante.id]?.[p.id] || "-";
+                          let colorProno = 'var(--text-light)'; 
+                          if (resultadoOficial && prono !== "-") {
+                            const puntos = calcularPuntos(prono, resultadoOficial);
+                            if (puntos === 2) colorProno = 'var(--green-sub)'; 
+                            else if (puntos === 1) colorProno = 'var(--blue-sub)'; 
+                            else colorProno = '#FF3333'; 
+                          } else if (!resultadoOficial && prono === "-") {
+                            colorProno = 'var(--text-muted)'; 
+                          }
+
+                          return (
+                            <td key={participante.id} style={{
+                              padding: '15px', fontWeight: 'bold', color: colorProno, whiteSpace: 'nowrap',
+                              borderBottom: '1px dashed rgba(255,255,255,0.1)', textAlign: 'center'
+                            }}>
+                              {prono}
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
+      </div>
+    </>
   );
 }
