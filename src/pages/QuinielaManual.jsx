@@ -6,7 +6,7 @@ export default function QuinielaManual() {
 
   const marcadorMundial = {
     partido: " UZBEKISTAN VS COLOMBIA",
-    resultado: " 1 - 2"
+    resultado: " 1 - 3"
   };
 
   const partidos = [
@@ -164,7 +164,7 @@ export default function QuinielaManual() {
     21: "1 - 1",
     22: "4 - 2",
     23: "1 - 0",
-    24: "1 - 2",
+    24: "1 - 3",
 
     
   };
