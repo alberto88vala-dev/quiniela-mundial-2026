@@ -6,7 +6,7 @@ export default function QuinielaManual() {
 
   const marcadorMundial = {
     partido: "Noruega vs Senegal",
-    resultado: "1 - 0"
+    resultado: "3 - 2"
   };
 
   const partidos = [
@@ -183,7 +183,7 @@ export default function QuinielaManual() {
     40: "1 - 3",
     41: "2 - 0",
     42: "3 - 0",
-    43: "1 - 0",
+    43: "3 - 2",
 
 
   };
