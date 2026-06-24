@@ -5,8 +5,8 @@ export default function QuinielaManual() {
   const [pronosticadorActivo, setPronosticadorActivo] = useState('betin');
 
   const marcadorMundial = {
-    partido: "Inglaterra vs Ghana",
-    resultado: "0 - 0"
+    partido: "Colobia vs RD Congo",
+    resultado: "1 - 0"
   };
 
   const partidos = [
@@ -187,6 +187,8 @@ export default function QuinielaManual() {
     44: "1 - 2",
     45: "5 - 0",
     46: "0 - 0",
+    47: "0 - 1",
+    48: "1 - 0",
 
   };
 
