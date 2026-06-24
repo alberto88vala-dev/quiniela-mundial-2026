@@ -184,9 +184,13 @@ export default function QuinielaManual() {
     41: "2 - 0",
     42: "3 - 0",
     43: "3 - 2",
-    44: "1 - 2", 
-   };
+    44: "1 - 2",
+    45: "5 - 0",
+    46: "0 - 0",
+    47: "0 - 1",
+    48: "1 - 0",
 
+  };
 
   const calcularPuntos = (prono, real) => {
     if (!prono || !real) return 0;
