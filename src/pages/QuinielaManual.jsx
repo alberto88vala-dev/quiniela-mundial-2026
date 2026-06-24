@@ -187,6 +187,7 @@ export default function QuinielaManual() {
     44: "1 - 2", 
    };
 
+
   const calcularPuntos = (prono, real) => {
     if (!prono || !real) return 0;
     const [pL, pV] = prono.split(' - ').map(Number);
