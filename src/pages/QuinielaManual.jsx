@@ -5,8 +5,8 @@ export default function QuinielaManual() {
   const [pronosticadorActivo, setPronosticadorActivo] = useState('betin');
 
   const marcadorMundial = {
-    partido: "Marrurecos vs Brasil",
-    resultado: "0 - 0"
+    partido: "Escocia vs Brasil",
+    resultado: "0 - 3"
   };
 
   const partidos = [
@@ -191,6 +191,8 @@ export default function QuinielaManual() {
     48: "1 - 0",            
     49: "2 - 1",
     50: "3 - 1",
+    51: "0 - 3",
+    52: "4 - 2"
   };
 
   const calcularPuntos = (prono, real) => {
