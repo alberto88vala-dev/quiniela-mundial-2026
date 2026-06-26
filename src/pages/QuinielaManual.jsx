@@ -6,7 +6,7 @@ export default function QuinielaManual() {
 
   const marcadorMundial = {
     partido: "Turquia vs Estados Unidos",
-    resultado: "0 - 0"
+    resultado: "3 - 2"
   };
 
   const partidos = [
@@ -199,7 +199,8 @@ export default function QuinielaManual() {
     56: "2 - 1",
     57: "1 - 1",
     58: "1 - 3",
-    59: "1 - 0",
+    59: "3 - 2",
+    60: "1 - 1",
     };
 
   const calcularPuntos = (prono, real) => {
