@@ -200,7 +200,7 @@ export default function QuinielaManual() {
     57: "1 - 1",
     58: "1 - 3",
     59: "3 - 2",
-    60: "1 - 1",
+    60: "0 - 0",
     };
 
   const calcularPuntos = (prono, real) => {
