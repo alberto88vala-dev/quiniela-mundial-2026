@@ -5,8 +5,8 @@ export default function QuinielaManual() {
   const [pronosticadorActivo, setPronosticadorActivo] = useState('betin');
 
   const marcadorMundial = {
-    partido: "Turquia vs Estados Unidos",
-    resultado: "3 - 2"
+    partido: "Uruguay vs España",
+    resultado: "0 - 1"
   };
 
   const partidos = [
@@ -201,6 +201,10 @@ export default function QuinielaManual() {
     58: "1 - 3",
     59: "3 - 2",
     60: "0 - 0",
+    61: "1 - 4",
+    62: "5 - 0",
+    63: "0 - 0",
+    64: "0 - 1",
     };
 
   const calcularPuntos = (prono, real) => {
