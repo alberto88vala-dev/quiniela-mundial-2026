@@ -5,8 +5,8 @@ export default function QuinielaManual() {
   const [pronosticadorActivo, setPronosticadorActivo] = useState('betin');
 
   const marcadorMundial = {
-    partido: "Jordania vs Argentina",
-    resultado: "1 - 3"
+    partido: "Jessica",
+    resultado: "Ganadora"
   };
 
   const partidos = [
