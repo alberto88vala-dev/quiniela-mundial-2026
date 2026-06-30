@@ -3,6 +3,39 @@ import React, { useState } from 'react';
 export default function QuinielaManual() {
   const [activeTab, setActiveTab] = useState('pronosticar');
   const [pronosticadorActivo, setPronosticadorActivo] = useState('betin');
+  // 1. Agrega esta lógica antes del return para obtener el último resultado
+const ultimoId = Object.keys(resultadosOficiales).pop();
+const ultimoResultado = resultadosOficiales[ultimoId];
+const partidoUltimo = partidos.find(p => p.id === parseInt(ultimoId));
+const localUltimo = resolverEquipo(partidoUltimo?.local);
+const visitaUltimo = resolverEquipo(partidoUltimo?.visita);
+
+// 2. Sustituye tu <header> actual con este bloque:
+<header className="header-organic" style={{ textAlign: 'center', padding: '20px' }}>
+  <h1 className="header-title">QUINIELA 2026</h1>
+  
+  {/* Recuadro del último resultado */}
+  {partidoUltimo && (
+    <div style={{
+      background: 'rgba(255,255,255,0.1)',
+      border: '2px solid var(--azul)',
+      borderRadius: '15px',
+      padding: '10px 20px',
+      display: 'inline-block',
+      marginTop: '15px'
+    }}>
+      <p style={{ margin: '0', fontSize: '0.8rem', color: 'var(--blanco)' }}>Último partido:</p>
+      <p style={{ margin: '0', fontWeight: 'bold' }}>
+        {localUltimo} {ultimoResultado.regular} {visitaUltimo}
+      </p>
+      {ultimoResultado.penales && (
+        <p style={{ margin: '0', fontSize: '0.7rem', color: 'var(--amarillo)' }}>
+          (Penales: {ultimoResultado.penales})
+        </p>
+      )}
+    </div>
+  )}
+</header>
 
   // REGISTRA AQUÍ LOS RESULTADOS. 
   // Usa "regular" para los 90 min (esto es lo que da los puntos).
@@ -92,9 +125,7 @@ export default function QuinielaManual() {
     lady: { 73: "1 - 0", 76: "2 - 1", 74: "2 - 2", 75: "2 - 0", 78: "0 - 2", 77: "1 - 0", 79: "2 - 1", 80: "2 - 0", 82: "0 - 0", 81: "2 - 0", 84: "1 - 0", 83: "1 - 0", 85: "0 - 1", 88: "1 - 3", 86: "0 - 2", 87: "1 - 2", 89: "3 - 0", 90: "3 - 2", 91: "1 - 0", 92: "1 - 0", 93: "1 - 0", 94: "3 - 0", 95: "1 - 2", 96: "1 - 2", 97: "3 - 2", 98: "1 - 2", 99: "1 - 2", 100: "1 - 1", 101: "0 - 2", 102: "2 - 0", 103: "3 - 2", 104: "3 - 1" },
     tsuki: { 73: "1 - 2", 76: "2 - 0", 74: "3 - 1", 75: "2 - 1", 78: "1 - 0", 77: "3 - 0", 79: "2 - 0", 80: "2 - 1", 82: "2 - 0", 81: "2 - 1", 84: "2 - 1", 83: "0 - 1", 85: "0 - 1", 88: "1 - 1", 86: "2 - 0", 87: "2 - 1", 89: "2 - 0", 90: "1 - 2", 91: "0 - 1", 92: "0 - 1", 93: "2 - 2", 94: "1 - 3", 95: "0 - 0", 96: "1 - 2", 97: "1 - 2", 98: "1 - 1", 99: "2 - 1", 100: "2 - 1", 101: "1 - 2", 102: "1 - 2", 103: "2 - 1", 104: "2 - 1" }
   };
-
-  // Lógica de resolución de llaves y puntos
-  const resolverEquipo = (idOrPlaceholder) => {
+const resolverEquipo = (idOrPlaceholder) => {
     if (!idOrPlaceholder.startsWith('G-') && !idOrPlaceholder.startsWith('P-')) return idOrPlaceholder;
     const isLoser = idOrPlaceholder.startsWith('P-');
     const matchId = parseInt(idOrPlaceholder.replace('G-', '').replace('P-', ''));
@@ -115,73 +146,68 @@ export default function QuinielaManual() {
     return ganador === match.local ? localReal : visitaReal;
   };
 
-  const calcularPuntos = (prono, real) => {
-    if (!prono || !real || prono === "-" || real === "-") return 0;
+  const getScoreStyle = (prono, matchId) => {
+    const real = resultadosOficiales[matchId];
+    if (!real || !prono || prono === "-") return 'score-pending';
     const [pL, pV] = prono.split(' - ').map(Number);
     const [rL, rV] = real.regular.split(' - ').map(Number);
-    if (pL === rL && pV === rV) return 2;
-    const pronoTendencia = pL > pV ? 'Local' : pL < pV ? 'Visita' : 'Empate';
-    const realTendencia = rL > rV ? 'Local' : rL < rV ? 'Visita' : 'Empate';
-    return pronoTendencia === realTendencia ? 1 : 0;
+    if (pL === rL && pV === rV) return 'score-exact';
+    const pTend = pL > pV ? 'Local' : pL < pV ? 'Visita' : 'Empate';
+    const rTend = rL > rV ? 'Local' : rL < rV ? 'Visita' : 'Empate';
+    return pTend === rTend ? 'score-tendency' : 'score-fail';
   };
-
-  const tablaRanking = participantes.map(p => {
-    let puntosTotales = 0;
-    Object.keys(resultadosOficiales).forEach(id => puntosTotales += calcularPuntos(diccionariosPronosticos[p.id][id], resultadosOficiales[id]));
-    return { nombre: p.nombre, puntos: puntosTotales };
-  }).sort((a, b) => b.puntos - a.puntos);
 
   return (
     <>
       <style>{`
-        :root { --green-olive: #1E330D; --warm-white: #FAF0E6; --amarillo: #FCD116; --azul: #59B3E4; --blanco: #FFFFFF; --rojo: #E53935; --text-dark: #333333; }
-        body { background-color: var(--warm-white); color: var(--text-dark); font-family: sans-serif; margin: 0; }
-        .app-container { max-width: 900px; margin: 0 auto; padding: 20px; }
-        .organic-card { background-color: var(--green-olive); border-radius: 20px; padding: 20px; color: white; border: 2px solid var(--azul); }
-        .tab-button { background: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 10px; cursor: pointer; font-weight: bold; }
-        .tab-button.active { background: var(--azul); color: white; }
-        .match-row { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 10px; padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .score-box { background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 5px; text-align: center; font-weight: bold; }
-        .fase-header { grid-column: 1/-1; text-align: center; color: var(--amarillo); font-weight: bold; margin-top: 15px; border-top: 1px solid white; padding-top: 10px; }
+        :root { --green-olive: #1E330D; --amarillo: #FCD116; --azul: #59B3E4; --blanco: #FFFFFF; --rojo: #E53935; }
+        .score-exact { border: 2px solid #62B557; color: #62B557; background: rgba(98, 181, 87, 0.15); }
+        .score-tendency { border: 2px solid var(--azul); color: var(--azul); background: rgba(89, 179, 228, 0.15); }
+        .score-fail { border: 2px solid var(--rojo); color: var(--rojo); background: rgba(229, 57, 53, 0.15); }
+        .participant-btn { padding: 8px 15px; margin: 3px; border-radius: 10px; border: 1px solid var(--azul); background: transparent; color: white; cursor: pointer; }
+        .participant-btn.active { background: var(--azul); }
       `}</style>
       <div className="app-container">
-        <h1 style={{textAlign:'center'}}>QUINIELA 2026 - FASE FINAL</h1>
-        <div style={{textAlign:'center', marginBottom:'20px'}}>
-          {['pronosticar','anteriores','tabla','comparativa'].map(t => <button key={t} className={`tab-button ${activeTab===t?'active':''}`} onClick={()=>setActiveTab(t)}>{t.toUpperCase()}</button>)}
-        </div>
-        <div className="organic-card">
-          {activeTab === 'pronosticar' && (
-            <div>
-              <select onChange={(e)=>setPronosticadorActivo(e.target.value)} value={pronosticadorActivo} style={{width:'100%', padding:'10px', borderRadius:'5px'}}>
-                {participantes.map(p => <option key={p.id} value={p.id}>{p.nombre}</option>)}
-              </select>
-              <h3 style={{textAlign:'center'}}>🏆 Campeón: {participantes.find(p=>p.id===pronosticadorActivo)?.campeon}</h3>
-              {partidos.map((p,i) => {
-                const local = resolverEquipo(p.local), visita = resolverEquipo(p.visita);
-                return (
-                  <div key={p.id} className="match-row">
-                    {i===0 || partidos[i-1].fase !== p.fase ? <div className="fase-header">{p.fase}</div> : null}
-                    <div style={{textAlign:'right'}}>{banderas[local]} {local}</div>
-                    <div className="score-box">{diccionariosPronosticos[pronosticadorActivo][p.id]}</div>
-                    <div style={{textAlign:'left'}}>{visita} {banderas[visita]}</div>
-                  </div>
-                )
-              })}
+        {/* ... Menú de Tabs ... */}
+        
+        {activeTab === 'pronosticar' && (
+          <div className="organic-card">
+            <div style={{display:'flex', flexWrap:'wrap', justifyContent:'center'}}>
+              {participantes.map(p => (
+                <button key={p.id} className={`participant-btn ${pronosticadorActivo===p.id ? 'active':''}`} onClick={()=>setPronosticadorActivo(p.id)}>{p.nombre}</button>
+              ))}
             </div>
-          )}
-          {activeTab === 'anteriores' && (
-             partidos.map(p => resultadosOficiales[p.id] ? (
-               <div key={p.id} className="match-row">
-                 <div>{resolverEquipo(p.local)}</div>
-                 <div className="score-box">{resultadosOficiales[p.id].regular} {resultadosOficiales[p.id].penales ? `(Pen: ${resultadosOficiales[p.id].penales})`:''}</div>
-                 <div>{resolverEquipo(p.visita)}</div>
-               </div>
-             ) : null)
-          )}
-          {activeTab === 'tabla' && (
-            tablaRanking.map((p,i) => <div key={i}>{i+1}. {p.nombre} - {p.puntos} pts</div>)
-          )}
-        </div>
+            {partidos.map(p => {
+              const style = getScoreStyle(diccionariosPronosticos[pronosticadorActivo][p.id], p.id);
+              return (
+                <div key={p.id} className="match-row">
+                  <div>{resolverEquipo(p.local)}</div>
+                  <div className={`score-box ${style}`}>{diccionariosPronosticos[pronosticadorActivo][p.id]}</div>
+                  <div>{resolverEquipo(p.visita)}</div>
+                </div>
+              )
+            })}
+          </div>
+        )}
+
+        {activeTab === 'comparativa' && (
+          <div className="organic-card" style={{overflowX: 'auto'}}>
+            <table style={{width: '100%', color: 'white'}}>
+              <thead><tr><th>Partido</th>{participantes.map(p => <th key={p.id}>{p.nombre}</th>)}</tr></thead>
+              <tbody>
+                {partidos.map(p => (
+                  <tr key={p.id}>
+                    <td>{resolverEquipo(p.local)} vs {resolverEquipo(p.visita)}</td>
+                    {participantes.map(part => {
+                      const style = getScoreStyle(diccionariosPronosticos[part.id][p.id], p.id);
+                      return <td key={part.id} className={style}>{diccionariosPronosticos[part.id][p.id]}</td>
+                    })}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     </>
   );
