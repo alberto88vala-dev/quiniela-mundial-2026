@@ -6,7 +6,7 @@ export default function QuinielaManual() {
 
   // RESULTADOS OFICIALES (Agrega aquí los nuevos partidos)
   const resultadosOficiales = {
-    73: { regular: "1 - 0" }, // Canadá vs Sudáfrica
+    73: { regular: "0 - 1" }, // Canadá vs Sudáfrica
     76: { regular: "2 - 1" }, // Brasil vs Japón
     74: { regular: "1 - 1", penales: "3 - 4" }, // Alemania vs Paraguay
     75: { regular: "1 - 1", penales: "2 - 3" } // Países Bajos vs Marruecos
