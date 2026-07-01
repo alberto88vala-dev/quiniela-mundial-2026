@@ -12,8 +12,8 @@ export default function QuinielaManual() {
     75: { regular: "1 - 1", penales: "2 - 3" }, // Países Bajos vs Marruecos
     78: { regular: "1 - 2" }, // Costa de marfil vs Noruega
     77: { regular: "3 - 0" }, // Francia vs Suecia 
-
-  };
+    79: { regular: "2 - 0" }, // México vs Ecuador
+    };
 
   const partidos = [
     { id: 73, local: "Sudáfrica", visita: "Canadá", fase: "Dieciseisavos" },
@@ -22,7 +22,7 @@ export default function QuinielaManual() {
     { id: 75, local: "Paises Bajos", visita: "Marruecos", fase: "Dieciseisavos" },
     { id: 78, local: "Costa de marfil", visita: "Noruega", fase: "Dieciseisavos" },
     { id: 77, local: "Francia", visita: "Suecia", fase: "Dieciseisavos" },
-    { id: 79, local: "Ecuador", visita: "México", fase: "Dieciseisavos" },
+    { id: 79, local: "México", visita: "Ecuador", fase: "Dieciseisavos" },
     { id: 80, local: "Inglaterra", visita: "RD Congo", fase: "Dieciseisavos" },
     { id: 82, local: "Bélgica", visita: "Senegal", fase: "Dieciseisavos" },
     { id: 81, local: "USA", visita: "Bosnia", fase: "Dieciseisavos" },
