@@ -13,6 +13,7 @@ export default function QuinielaManual() {
     78: { regular: "1 - 2" }, // Costa de marfil vs Noruega
     77: { regular: "3 - 0" }, // Francia vs Suecia 
     79: { regular: "2 - 0" }, // México vs Ecuador
+    80: { regular: "2 - 1" }, // Inglaterra vs RD Congo
     };
 
   const partidos = [
