@@ -9,9 +9,10 @@ export default function QuinielaManual() {
     73: { regular: "0 - 1" }, // Canadá vs Sudáfrica
     76: { regular: "2 - 1" }, // Brasil vs Japón
     74: { regular: "1 - 1", penales: "3 - 4" }, // Alemania vs Paraguay
-    75: { regular: "1 - 1", penales: "2 - 3" } // Países Bajos vs Marruecos
-    78: { regular: "1 - 2" } // Costa de marfil vs Noruega
-    77: { regular: "3 - 0" } // Francia vs Suecia 
+    75: { regular: "1 - 1", penales: "2 - 3" }, // Países Bajos vs Marruecos
+    78: { regular: "1 - 2" }, // Costa de marfil vs Noruega
+    77: { regular: "3 - 0" }, // Francia vs Suecia 
+
   };
 
   const partidos = [
