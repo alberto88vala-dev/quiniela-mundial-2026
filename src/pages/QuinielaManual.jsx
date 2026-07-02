@@ -14,6 +14,7 @@ export default function QuinielaManual() {
     77: { regular: "3 - 0" }, // Francia vs Suecia 
     79: { regular: "2 - 0" }, // México vs Ecuador
     80: { regular: "2 - 1" }, // Inglaterra vs RD Congo
+    82: { regular: "2 - 2", penales: "3 - 2" }, // Bélgica vs Senegal
     };
 
   const partidos = [
