@@ -17,6 +17,7 @@ export default function QuinielaManual() {
     82: { regular: "2 - 2", penales: "3 - 2" }, // Bélgica vs Senegal
     81: { regular: "2 - 0" }, // USA vs Bosnia
     84: { regular: "3 - 0" }, // España vs Austria
+    83: { regular: "2 - 1" }, // Portugal vs Croacia
     };
 
   const partidos = [
