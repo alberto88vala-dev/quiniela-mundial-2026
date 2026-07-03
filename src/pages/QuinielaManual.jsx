@@ -18,6 +18,7 @@ export default function QuinielaManual() {
     81: { regular: "2 - 0" }, // USA vs Bosnia
     84: { regular: "3 - 0" }, // España vs Austria
     83: { regular: "2 - 1" }, // Portugal vs Croacia
+    85: { regular: "2 - 0" }, // Suiza vs Argelia
     };
 
   const partidos = [
