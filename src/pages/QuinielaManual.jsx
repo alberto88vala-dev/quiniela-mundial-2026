@@ -20,6 +20,7 @@ export default function QuinielaManual() {
     83: { regular: "2 - 1" }, // Portugal vs Croacia
     85: { regular: "2 - 0" }, // Suiza vs Argelia
     88: { regular: "1 - 1", penales: "2 - 4" }, // Australia vs Egipto
+    86: { regular: "1 - 1", penales: "3 - 2" }, // Argentina vs Cabo Verde
     };
 
   const partidos = [
