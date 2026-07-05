@@ -22,6 +22,8 @@ export default function QuinielaManual() {
     88: { regular: "1 - 1", penales: "2 - 4" }, // Australia vs Egipto
     86: { regular: "1 - 1", penales: "3 - 2" }, // Argentina vs Cabo Verde
     87: { regular: "1 - 0" }, // Colombia vs Ghana
+    89: { regular: "0 - 1" }, // G-74 vs G-77  
+    90: { regular: "0 - 3" }, // G-73 vs G-75  
     };
 
   const partidos = [
