@@ -25,7 +25,12 @@ export default function QuinielaManual() {
     89: { regular: "0 - 1" }, // G-74 vs G-77  
     90: { regular: "0 - 3" }, // G-73 vs G-75
     91: { regular: "1 - 2" }, // G-76 vs G-78
-    92: { regular: "2 - 3" }, // G-79 vs G-80  
+    92: { regular: "2 - 3" }, // G-79 vs G-80 
+    93: { regular: "0 - 1" }, // G-83 vs G-84
+    94: { regular: "1 - 4" }, // G-81 vs G-82
+    95: { regular: "3 - 2" }, // G-86 vs G-88
+    96: { regular: "0 - 0", penales: "4 - 3" }, // G-85 vs G-87
+
     };
 
   const partidos = [
@@ -45,7 +50,6 @@ export default function QuinielaManual() {
     { id: 88, local: "Australia", visita: "Egipto", fase: "Dieciseisavos" },
     { id: 86, local: "Argentina", visita: "Cabo Verde", fase: "Dieciseisavos" },
     { id: 87, local: "Colombia", visita: "Ghana", fase: "Dieciseisavos" },
-    // FASES SIGUIENTES (Se resuelven solas)
     { id: 89, local: "G-74", visita: "G-77", fase: "Octavos" },
     { id: 90, local: "G-73", visita: "G-75", fase: "Octavos" },
     { id: 91, local: "G-76", visita: "G-78", fase: "Octavos" },
@@ -61,7 +65,9 @@ export default function QuinielaManual() {
     { id: 101, local: "G-97", visita: "G-98", fase: "Semifinal" },
     { id: 102, local: "G-99", visita: "G-100", fase: "Semifinal" },
     { id: 103, local: "P-101", visita: "P-102", fase: "3er Lugar" },
-    { id: 104, local: "G-101", visita: "G-102", fase: "Final" }
+    { id: 104, local: "G-101", visita: "G-102", fase: "Final" },
+    // FASES SIGUIENTES (Se resuelven solas)
+  
   ];
 
   const banderas = {
