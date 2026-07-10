@@ -31,6 +31,7 @@ export default function QuinielaManual() {
     95: { regular: "3 - 2" }, // G-86 vs G-88
     96: { regular: "0 - 0", penales: "4 - 3" }, // G-85 vs G-87
     97: { regular: "2 - 0" }, // G-89 vs G-90
+    98: { regular: "2 - 1"}, // G-93 vs G-94
 
     };
 
