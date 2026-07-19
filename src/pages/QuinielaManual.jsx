@@ -36,6 +36,8 @@ export default function QuinielaManual() {
     100: { regular: "1 - 1", penales: "3 - 1" }, // G-95 vs G-96
     101: { regular: "0 - 2" }, // G-97 vs G-98
     102: { regular: "1 - 2" }, // G-99 vs G-100
+    103 : { regular: "4 - 6" }, // P-101 vs P-102
+
 
 
     };
